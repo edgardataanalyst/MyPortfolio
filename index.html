@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jason Martin - Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
   <style>
@@ -35,31 +35,60 @@
     .nav a:hover {
       color: #fff;
     }
-    .section {
-      padding: 100px 20px;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      min-height: 100vh;
+    header {
+      background: url('https://images7.alphacoders.com/752/752164.jpg') no-repeat center center/cover;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+      text-align: center;
       color: white;
-      text-shadow: 1px 1px 5px black;
     }
+    header h1 {
+      font-size: 3rem;
+      font-weight: 600;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 100px 20px;
+      color: #fff;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      padding: 40px;
+      border-radius: 10px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
     .section h2 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       margin-bottom: 20px;
       color: #ffc107;
     }
+
     .section p, .section ul {
-      font-size: 1.1rem;
+      font-size: 1rem;
       line-height: 1.8;
+      color: #eee;
     }
+
     .section ul {
       list-style: none;
       padding-left: 0;
     }
+
     .section ul li::before {
       content: '\2022';
       color: #ffc107;
@@ -67,17 +96,20 @@
       display: inline-block; 
       width: 1em;
     }
+
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 40px;
     }
+
     footer {
       background: #111;
       text-align: center;
       padding: 30px 0;
       color: #777;
     }
+
     @media (max-width: 768px) {
       .grid {
         grid-template-columns: 1fr;
@@ -90,77 +122,92 @@
   <div class="nav">
     <a href="#about">About</a>
     <a href="#resume">Resume</a>
-    <a href="#portfolio">What I Do</a>
+    <a href="#portfolio">Portfolio</a>
   </div>
 
-  <section class="section" id="about" style="background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413');">
-    <h2>About Me</h2>
-    <p>Email: jmartin@uptowerk.com</p>
-    <p>Graphic Designer with over 10 years of experience specializing in IT Department management for international logistics companies. I implement effective IT strategies at both local and global levels. My greatest strength is business awareness, allowing me to streamline infrastructure and applications.</p>
-    <p>📍 Orlando, Florida - 12259 State Road 535</p>
+  <header>
+    <h1>Jason <span style="color: #ffc107;">Martin</span></h1>
+    <p>Graphic Designer</p>
+    <div>
+      <a href="#resume" style="color:white; border: 1px solid white; padding: 10px 20px; margin: 10px; text-decoration: none;">Resume</a>
+      <a href="#portfolio" style="color:white; border: 1px solid white; padding: 10px 20px; margin: 10px; text-decoration: none;">Portfolio</a>
+    </div>
+  </header>
+
+  <section class="section" id="about" style="background-image: url('https://images.unsplash.com/photo-1584697964154-5f16f3ec2f1d');">
+    <div class="overlay">
+      <h2>About Me</h2>
+      <p>Email: jmartin@uptowerk.com</p>
+      <p>Graphic Designer with over 10 years of experience specializing in IT Department management for international logistics companies. I can implement effective IT Strategies at local and global levels. My greatest strength is business awareness, which enables me to streamline infrastructure and applications.</p>
+      <p>📍 Orlando, Florida - 12259 State Road 535</p>
+    </div>
   </section>
 
-  <section class="section" id="resume" style="background-image: url('https://images.unsplash.com/photo-1607746882042-944635dfe10e');">
-    <h2>My Resume</h2>
-    <div class="grid">
-      <div>
-        <h3>Software Skills</h3>
-        <ul>
-          <li>Photoshop</li>
-          <li>Illustrator</li>
-          <li>InDesign</li>
-          <li>After Effects</li>
-        </ul>
-        <h3>Languages</h3>
-        <ul>
-          <li>English</li>
-          <li>Arabic</li>
-          <li>Turkish</li>
-        </ul>
-        <h3>Personal Skills</h3>
-        <ul>
-          <li>Creativity</li>
-          <li>Team Work</li>
-          <li>Organization</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Experience</h3>
-        <ul>
-          <li>White Fish Advertising Co. – Art Director</li>
-          <li>Pyramids Sun Advertising Co. – Senior Graphic Designer</li>
-          <li>Planet Stationary & Printing Services – Graphic Designer</li>
-          <li>Play Graphic Advertising Agency – Graphic Designer</li>
-          <li>Marco Florida IT & Computers – Graphic Designer</li>
-        </ul>
-        <h3>Education</h3>
-        <p>BS/MS in Computer Science<br>University of Maryland</p>
+  <section class="section" id="resume" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085');">
+    <div class="overlay">
+      <h2>My Resume</h2>
+      <div class="grid">
+        <div>
+          <h3>Software Skills</h3>
+          <ul>
+            <li>Photoshop</li>
+            <li>Illustrator</li>
+            <li>InDesign</li>
+            <li>After Effects</li>
+          </ul>
+          <h3>Languages</h3>
+          <ul>
+            <li>English</li>
+            <li>Arabic</li>
+            <li>Turkish</li>
+          </ul>
+          <h3>Personal Skills</h3>
+          <ul>
+            <li>Creativity</li>
+            <li>Team Work</li>
+            <li>Organization</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Experience</h3>
+          <ul>
+            <li>White Fish Advertising Co. – Art Director</li>
+            <li>Pyramids Sun Advertising Co. – Senior Graphic Designer</li>
+            <li>Planet Stationary & Printing Services – Graphic Designer</li>
+            <li>Play Graphic Advertising Agency – Graphic Designer</li>
+            <li>Marco Florida IT & Computers – Graphic Designer</li>
+          </ul>
+          <h3>Education</h3>
+          <p>BS/MS in Computer Science<br>University of Maryland</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="portfolio" style="background-image: url('https://images.unsplash.com/photo-1545239351-1141bd82e8a6');">
-    <h2>What Can I Do?</h2>
-    <div class="grid">
+  <section class="section" id="portfolio" style="background-image: url('https://images.unsplash.com/photo-1505236738295-2548c02d62b7');">
+    <div class="overlay">
+      <h2>What Can I Do?</h2>
+      <div class="grid">
+        <ul>
+          <li>Logo - Stationery - Branding</li>
+          <li>Newsletter - Packaging - Catalog</li>
+          <li>Strategy - Advertisement</li>
+        </ul>
+        <ul>
+          <li>Creativity - Planning</li>
+          <li>Typography - Layout</li>
+          <li>Color Sense - Inspiration</li>
+        </ul>
+      </div>
+      <br/>
+      <h3>Hobbies & Interests</h3>
       <ul>
-        <li>Logo - Stationery - Branding</li>
-        <li>Newsletter - Packaging - Catalog</li>
-        <li>Strategy - Advertisement</li>
-      </ul>
-      <ul>
-        <li>Creativity - Planning</li>
-        <li>Typography - Layout</li>
-        <li>Color Sense - Inspiration</li>
+        <li>Drawing</li>
+        <li>Photography</li>
+        <li>Travel</li>
+        <li>Music</li>
       </ul>
     </div>
-    <br />
-    <h3>Hobbies & Interests</h3>
-    <ul>
-      <li>Drawing</li>
-      <li>Photography</li>
-      <li>Travel</li>
-      <li>Music</li>
-    </ul>
   </section>
 
   <footer>
