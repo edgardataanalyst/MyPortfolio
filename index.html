@@ -3,135 +3,191 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Jason Martin - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f0f4f8;
-      color: #333;
-      line-height: 1.6;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0f0f0f;
+      color: #ddd;
     }
-
     header {
-      background-color: #002244;
-      color: white;
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 60px 20px;
+      color: white;
     }
-
     header h1 {
-      font-size: 2.8rem;
+      font-size: 3rem;
+      font-weight: 600;
     }
-
     header p {
       font-size: 1.2rem;
-      margin-top: 10px;
-      color: #cbd5e0;
+      margin-bottom: 20px;
     }
-
-    .container {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 0;
+      display: flex;
+      justify-content: center;
+      z-index: 100;
     }
-
-    .section {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.05);
-      padding: 30px;
-      margin-bottom: 30px;
-      transition: transform 0.2s ease;
-    }
-
-    .section:hover {
-      transform: translateY(-5px);
-    }
-
-    h2 {
-      color: #002244;
-      margin-bottom: 15px;
-      font-size: 1.6rem;
-      border-left: 4px solid #ffc107;
-      padding-left: 10px;
-    }
-
-    ul {
-      list-style-type: square;
-      padding-left: 20px;
-    }
-
-    a {
-      color: #007bff;
+    .nav a {
+      color: #ccc;
       text-decoration: none;
+      margin: 0 15px;
+      font-weight: 300;
     }
-
-    a:hover {
-      text-decoration: underline;
+    .nav a:hover {
+      color: #fff;
     }
-
+    .section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #ffc107;
+    }
+    .section p, .section ul {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #bbb;
+    }
+    .section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .section ul li::before {
+      content: '\2022';
+      color: #ffc107;
+      font-weight: bold;
+      display: inline-block; 
+      width: 1em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
     footer {
-      background-color: #002244;
-      color: #eee;
+      background: #111;
       text-align: center;
-      padding: 20px;
-      margin-top: 60px;
-      font-size: 0.9rem;
+      padding: 30px 0;
+      color: #777;
     }
-
     @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      h2 {
-        font-size: 1.4rem;
+      .grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>My Professional Portfolio</h1>
-    <p>Aspiring Web Developer & Tech Enthusiast</p>
-  </header>
-
-  <div class="container">
-
-    <div class="section">
-      <h2>About Me</h2>
-      <p>Hello! I’m <strong>Your Name</strong>, a passionate student with a love for web development, design, and creating tech solutions. I'm currently learning HTML, CSS, JavaScript, and PHP, and I enjoy building creative and functional websites.</p>
-    </div>
-
-    <div class="section">
-      <h2>My Projects</h2>
-      <ul>
-        <li><strong>School Website</strong> – A modern school homepage with sections for courses, mission-vision, and contact info.</li>
-        <li><strong>RFID Attendance System</strong> – Tap-in/out tracker for students using PHP, MySQL, and RFID module.</li>
-        <li><strong>Scratch Games</strong> – Interactive logic games made with Scratch for kids and beginner coders.</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>Contact Me</h2>
-      <p>Email: yourname@example.com</p>
-      <p>Facebook: <a href="https://facebook.com/yourprofile" target="_blank">facebook.com/yourprofile</a></p>
-      <p>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
-    </div>
-
+  <div class="nav">
+    <a href="#about">About</a>
+    <a href="#resume">Resume</a>
+    <a href="#portfolio">Portfolio</a>
   </div>
 
+  <header>
+    <h1>Jason <span style="color: #ffc107;">Martin</span></h1>
+    <p>Graphic Designer</p>
+    <div>
+      <a href="#resume" style="color:white; border: 1px solid white; padding: 10px 20px; margin: 10px; text-decoration: none;">Resume</a>
+      <a href="#portfolio" style="color:white; border: 1px solid white; padding: 10px 20px; margin: 10px; text-decoration: none;">Portfolio</a>
+    </div>
+  </header>
+
+  <section class="section" id="about">
+    <h2>About</h2>
+    <p>Email: jmartin@uptowerk.com</p>
+    <p>Graphic Designer with over 10 years of experience specializing in IT Department management for international logistics companies. I can implement effective IT Strategies at local and global levels. My greatest strength is business awareness, which enables me to streamline infrastructure and applications.</p>
+    <p>📍 Orlando, Florida - 12259 State Road 535</p>
+  </section>
+
+  <section class="section" id="resume">
+    <h2>Resume</h2>
+    <div class="grid">
+      <div>
+        <h3>Software Skills</h3>
+        <ul>
+          <li>Photoshop</li>
+          <li>Illustrator</li>
+          <li>InDesign</li>
+          <li>After Effects</li>
+        </ul>
+        <h3>Languages</h3>
+        <ul>
+          <li>English</li>
+          <li>Arabic</li>
+          <li>Turkish</li>
+        </ul>
+        <h3>Personal Skills</h3>
+        <ul>
+          <li>Creativity</li>
+          <li>Team Work</li>
+          <li>Organization</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Experience</h3>
+        <ul>
+          <li>White Fish Advertising Co. – Art Director</li>
+          <li>Pyramids Sun Advertising Co. – Senior Graphic Designer</li>
+          <li>Planet Stationary & Printing Services – Graphic Designer</li>
+          <li>Play Graphic Advertising Agency – Graphic Designer</li>
+          <li>Marco Florida IT & Computers – Graphic Designer</li>
+        </ul>
+        <h3>Education</h3>
+        <p>BS/MS in Computer Science<br>University of Maryland</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="portfolio">
+    <h2>What Can I Do?</h2>
+    <div class="grid">
+      <ul>
+        <li>Logo - Stationery - Branding</li>
+        <li>Newsletter - Packaging - Catalog</li>
+        <li>Strategy - Advertisement</li>
+      </ul>
+      <ul>
+        <li>Creativity - Planning</li>
+        <li>Typography - Layout</li>
+        <li>Color Sense - Inspiration</li>
+      </ul>
+    </div>
+    <br />
+    <h3>Hobbies & Interests</h3>
+    <ul>
+      <li>Drawing</li>
+      <li>Photography</li>
+      <li>Travel</li>
+      <li>Music</li>
+    </ul>
+  </section>
+
   <footer>
-    <p>&copy; 2025 Your Name. Built with ❤️ and HTML/CSS.</p>
+    <p>&copy; 2025 Jason Martin | All rights reserved</p>
   </footer>
 
 </body>
 </html>
+
