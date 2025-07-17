@@ -13,26 +13,8 @@
     }
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: #0f0f0f;
+      background-color: #000;
       color: #ddd;
-    }
-    header {
-      background: url('https://www.reddit.com/r/wallpaper/comments/e0yz4p/black_cat_1920x1080/#lightbox') no-repeat center center/cover;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-    }
-    header h1 {
-      font-size: 3rem;
-      font-weight: 600;
-    }
-    header p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
     }
     .nav {
       position: fixed;
@@ -54,19 +36,25 @@
       color: #fff;
     }
     .section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
+      padding: 100px 20px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: white;
+      text-shadow: 1px 1px 5px black;
     }
     .section h2 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin-bottom: 20px;
       color: #ffc107;
     }
     .section p, .section ul {
-      font-size: 1rem;
+      font-size: 1.1rem;
       line-height: 1.8;
-      color: #bbb;
     }
     .section ul {
       list-style: none;
@@ -102,27 +90,18 @@
   <div class="nav">
     <a href="#about">About</a>
     <a href="#resume">Resume</a>
-    <a href="#portfolio">Portfolio</a>
+    <a href="#portfolio">What I Do</a>
   </div>
 
-  <header>
-    <h1>Jason <span style="color: #ffc107;">Martin</span></h1>
-    <p>Graphic Designer</p>
-    <div>
-      <a href="#resume" style="color:white; border: 1px solid white; padding: 10px 20px; margin: 10px; text-decoration: none;">Resume</a>
-      <a href="#portfolio" style="color:white; border: 1px solid white; padding: 10px 20px; margin: 10px; text-decoration: none;">Portfolio</a>
-    </div>
-  </header>
-
-  <section class="section" id="about">
-    <h2>About</h2>
+  <section class="section" id="about" style="background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413');">
+    <h2>About Me</h2>
     <p>Email: jmartin@uptowerk.com</p>
-    <p>Graphic Designer with over 10 years of experience specializing in IT Department management for international logistics companies. I can implement effective IT Strategies at local and global levels. My greatest strength is business awareness, which enables me to streamline infrastructure and applications.</p>
+    <p>Graphic Designer with over 10 years of experience specializing in IT Department management for international logistics companies. I implement effective IT strategies at both local and global levels. My greatest strength is business awareness, allowing me to streamline infrastructure and applications.</p>
     <p>📍 Orlando, Florida - 12259 State Road 535</p>
   </section>
 
-  <section class="section" id="resume">
-    <h2>Resume</h2>
+  <section class="section" id="resume" style="background-image: url('https://images.unsplash.com/photo-1607746882042-944635dfe10e');">
+    <h2>My Resume</h2>
     <div class="grid">
       <div>
         <h3>Software Skills</h3>
@@ -160,7 +139,7 @@
     </div>
   </section>
 
-  <section class="section" id="portfolio">
+  <section class="section" id="portfolio" style="background-image: url('https://images.unsplash.com/photo-1545239351-1141bd82e8a6');">
     <h2>What Can I Do?</h2>
     <div class="grid">
       <ul>
@@ -190,4 +169,3 @@
 
 </body>
 </html>
-
