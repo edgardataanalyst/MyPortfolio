@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Portfolio</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     * {
       margin: 0;
@@ -18,13 +20,40 @@
       scroll-behavior: smooth;
     }
 
+    /* Header styles */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      z-index: 9999;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.6);
+    }
+
+    .social-icons a {
+      color: #00ccff;
+      font-size: 20px;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #ffffff;
+    }
+
     .section {
       position: relative;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px 20px;
+      padding: 80px 20px 40px; /* account for header */
       overflow: hidden;
     }
 
@@ -171,10 +200,30 @@
 </head>
 <body>
 
+  <!-- Header with Social Media -->
+ <header>
+  <div class="social-icons" style="display: flex; gap: 15px;">
+    <a href="https://web.facebook.com/edgarboragay21" target="_blank" title="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/edgardo-boragay-2ab51725a/" target="_blank" title="LinkedIn">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a href="https://www.instagram.com/edgarboragay/" target="_blank" title="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+  <div class="social-icons">
+    <a href="tel:+639957536714" title="Call Me">
+      <i class="fas fa-phone-alt"></i> +63 9957536714
+    </a>
+  </div>
+</header>
+
   <!-- About Me Section -->
   <section class="section" id="about">
     <video autoplay muted loop playsinline class="bg-video">
-      <source src="section_4.mp4" type="video/mp4" />
+      <source src="section _1.mov" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <div class="overlay" style="text-align: center;">
@@ -190,32 +239,31 @@
   </section>
 
   <!-- My Resume Section -->
-<section class="section fade-in" id="resume">
-  <video autoplay muted loop playsinline class="bg-video">
-    <source src="section_1.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-  <div class="overlay content-box animate-content">
-    <h2>Currently Employed</h2>
-    <ul>
-      <li><strong>Position:</strong> IT Administrative Assistant (2017 – Present)</li>
-      <li><strong>Role:</strong> ICT & Technology Teacher (HTML, CSS, PHP, Scratch)</li>
-      <li><strong>Support:</strong> Network, printing, and computer labs</li>
-      <li><strong>Tasks:</strong> Enrollment, encoding, and database work</li>
-    </ul>
-  </div>
-</section>
-
+  <section class="section" id="resume">
+    <video autoplay muted loop playsinline class="bg-video">
+      <source src="section_2.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="overlay">
+      <h2>What I Do Now</h2>
+      <ul>
+        <li><strong>Position:</strong> IT Administrative Assistant (2017 – Present)</li>
+        <li><strong>Role:</strong> Empowerment Technology - ICT Teacher (Programming and Coding)</li>
+        <li><strong>Support:</strong> Network, Printing, Software, and Hardware</li>
+        <li><strong>Tasks:</strong> Infographics, Encoding, Social Media Manager, and Database Work</li>
+      </ul>
+    </div>
+  </section>
 
   <!-- What Can I Do Section -->
   <section class="section" id="skills">
     <video autoplay muted loop playsinline class="bg-video">
-      <source src="section_2.mp4" type="video/mp4" />
+      <source src="section_3.mp4" type="video/mp4" />
     </video>
     <div class="overlay">
       <h2>What Can I Do</h2>
       <p>
-        ✔️ Build responsive websites (HTML/CSS/PHP)<br>
+        ✔️ Build responsive websites (HTML/CSS/PHP/JAVASCRIPT)<br>
         ✔️ Develop basic systems like surveys & attendance<br>
         ✔️ Teach programming concepts to students<br>
         ✔️ Provide tech support and IT maintenance
@@ -226,7 +274,7 @@
   <!-- Project Gallery Section -->
   <section class="section" id="projects">
     <video autoplay muted loop playsinline class="bg-video">
-      <source src="section_3.mp4" type="video/mp4" />
+      <source src="section_5.mp4" type="video/mp4" />
     </video>
     <div class="overlay">
       <h2>Project Gallery</h2>
@@ -250,6 +298,31 @@
       </div>
     </div>
   </section>
+
+  <!-- Contact Form Section-->
+<section class="section" id="contact">
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="section_4.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <div class="overlay">
+    <h2>Contact Me</h2>
+    <form action="#" method="post" style="display: flex; flex-direction: column; gap: 15px;">
+      <input type="text" name="name" placeholder="Full Name" required 
+             style="padding: 12px; border-radius: 6px; border: none; font-size: 16px;" />
+      <input type="email" name="email" placeholder="Email Address" required 
+             style="padding: 12px; border-radius: 6px; border: none; font-size: 16px;" />
+      <input type="text" name="subject" placeholder="Subject" required 
+             style="padding: 12px; border-radius: 6px; border: none; font-size: 16px;" />
+      <textarea name="message" rows="5" placeholder="Your Message" required 
+                style="padding: 12px; border-radius: 6px; border: none; font-size: 16px; resize: none;"></textarea>
+      <button type="submit" 
+              style="padding: 12px; background-color: #00ccff; color: #000; border: none; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 16px;">
+        Send Message
+      </button>
+    </form>
+  </div>
+</section>
 
   <footer>
     &copy; 2025 Edgardo River Boragay Jr | My Portfolio
