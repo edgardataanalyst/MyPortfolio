@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -57,9 +57,7 @@
       max-width: 100%;
       width: 380px;
       margin-bottom: 20px;
-      background-color: transparent;
       animation: zoomInFade 1.2s ease forwards;
-      transition: transform 0.4s ease;
       filter: drop-shadow(0 0 9px #00ccff);
     }
 
@@ -116,7 +114,7 @@
       min-height: 100vh;
       object-fit: cover;
       z-index: -1;
-      opacity: 0.100;
+      opacity: 0.1;
       filter: brightness(0.5) blur(1px);
     }
 
@@ -148,6 +146,32 @@
       box-shadow: 0 0 12px rgba(0, 204, 255, 0.4);
     }
 
+    .carousel-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .carousel-btn {
+      background: rgba(0, 0, 0, 0.6);
+      color: #00ccff;
+      border: none;
+      font-size: 24px;
+      padding: 10px 16px;
+      cursor: pointer;
+      pointer-events: auto;
+      border-radius: 50%;
+      transition: background 0.3s ease;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(0, 0, 0, 0.9);
+    }
+
     .project-title {
       margin-top: 10px;
       font-size: 18px;
@@ -165,12 +189,12 @@
         width: 90%;
       }
 
-      .position-title {
-        font-size: 17px;
-      }
-
       .carousel-slide img {
         max-height: 250px;
+      }
+
+      .position-title {
+        font-size: 17px;
       }
 
       .project-title {
@@ -213,7 +237,7 @@
 
   <section class="section" id="about">
     <img src="profile.png" alt="Profile Picture" class="profile-pic" />
-    <h2 style="margin-top: 1px;">Edgardo Rivera Boragay Jr</h2>
+    <h2>Edgardo Rivera Boragay Jr</h2>
     <p class="position-title">
       School IT Administrative / Website Developer / Data Analyst
     </p>
@@ -223,7 +247,7 @@
       <a href="https://github.com/edgardataanalyst" target="_blank"><i class="fab fa-github fa-bounce"></i></a>
       <a href="https://www.instagram.com/edgarboragay/" target="_blank"><i class="fab fa-instagram fa-bounce"></i></a>
     </div>
-    <div class="overlay" style="text-align: center; max-width: 800px; padding: 10px;">
+    <div class="overlay" style="max-width: 800px; padding: 10px;">
       <p>
         I have over 6 years of experience as an IT Administrative Assistant at New Life Christian School of Cavite.
         My role includes providing technical support across the school, teaching programming and coding to Junior and Senior High School students, 
@@ -254,6 +278,10 @@
           <p class="project-title">Dashboard</p>
         </div>
       </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prev">&#10094;</button>
+        <button class="carousel-btn" id="next">&#10095;</button>
+      </div>
     </div>
   </section>
 
@@ -271,13 +299,21 @@
     const slides = document.querySelectorAll('.carousel-slide');
     let index = 0;
 
-    function showNextSlide() {
-      index = (index + 1) % slides.length;
+    function updateSlide() {
       carousel.style.transform = `translateX(-${index * 100}%)`;
     }
 
-    setInterval(showNextSlide, 3500);
+    document.getElementById('next').addEventListener('click', () => {
+      index = (index + 1) % slides.length;
+      updateSlide();
+    });
 
+    document.getElementById('prev').addEventListener('click', () => {
+      index = (index - 1 + slides.length) % slides.length;
+      updateSlide();
+    });
+
+    // Touch swipe support
     let startX = 0;
     const container = document.getElementById('carousel');
 
@@ -287,10 +323,13 @@
 
     container.addEventListener('touchend', e => {
       const endX = e.changedTouches[0].clientX;
-      if (startX - endX > 50) showNextSlide();
+      if (startX - endX > 50) {
+        index = (index + 1) % slides.length;
+        updateSlide();
+      }
       if (endX - startX > 50) {
         index = (index - 1 + slides.length) % slides.length;
-        carousel.style.transform = `translateX(-${index * 100}%)`;
+        updateSlide();
       }
     });
   </script>
