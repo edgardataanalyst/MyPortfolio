@@ -42,7 +42,7 @@
     }
 
     section {
-      padding: 100px 20px;
+      padding: 100px 20px 60px;
       min-height: 100vh;
     }
 
@@ -50,19 +50,16 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       text-align: center;
     }
 
     .profile-pic {
-      max-width: 500px;
+      max-width: 100%;
+      width: 380px;
       margin-bottom: 20px;
-      margin-left: auto;
-      margin-right: auto;
       background-color: transparent;
       animation: zoomInFade 1.2s ease forwards;
       transition: transform 0.4s ease;
-      display: block;
       filter: drop-shadow(0 0 9px #00ccff);
     }
 
@@ -72,9 +69,9 @@
     }
 
     .position-title {
-      font-size: 18px;
+      font-size: 20px;
       color: #00ccff;
-      margin-bottom: 15px;
+      margin: 10px 0 20px;
     }
 
     .social-icons a {
@@ -164,11 +161,38 @@
     }
 
     @media (max-width: 768px) {
+      .profile-pic {
+        width: 90%;
+      }
+
+      .position-title {
+        font-size: 17px;
+      }
+
       .carousel-slide img {
         max-height: 250px;
       }
 
       .project-title {
+        font-size: 16px;
+      }
+
+      .download-resume {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .carousel-slide img {
+        max-height: 200px;
+      }
+
+      .project-title {
+        font-size: 15px;
+      }
+
+      .position-title {
         font-size: 16px;
       }
     }
@@ -187,7 +211,7 @@
     </nav>
   </header>
 
-  <section class="section animate" id="about">
+  <section class="section" id="about">
     <img src="profile.png" alt="Profile Picture" class="profile-pic" />
     <h2 style="margin-top: 1px;">Edgardo Rivera Boragay Jr</h2>
     <p class="position-title">
@@ -199,7 +223,7 @@
       <a href="https://github.com/edgardataanalyst" target="_blank"><i class="fab fa-github fa-bounce"></i></a>
       <a href="https://www.instagram.com/edgarboragay/" target="_blank"><i class="fab fa-instagram fa-bounce"></i></a>
     </div>
-    <div class="overlay" style="text-align: center; max-width: 800px;">
+    <div class="overlay" style="text-align: center; max-width: 800px; padding: 10px;">
       <p>
         I have over 6 years of experience as an IT Administrative Assistant at New Life Christian School of Cavite.
         My role includes providing technical support across the school, teaching programming and coding to Junior and Senior High School students, 
@@ -209,9 +233,8 @@
     </div>
   </section>
 
-  <section class="section animate" id="portfolio">
+  <section class="section" id="portfolio">
     <h2>Portfolio</h2>
-
     <div class="carousel-container" id="carousel">
       <div class="carousel-wrapper">
         <div class="carousel-slide">
@@ -230,19 +253,11 @@
           <img src="powerbi.jpeg" alt="Project 4">
           <p class="project-title">Dashboard</p>
         </div>
-        <div class="carousel-slide">
-          <img src="rfid.png" alt="Project 5">
-          <p class="project-title">RFID Tap in/out System</p>
-        </div>
-         <div class="carousel-slide">
-          <img src="scratch.png" alt="Project 5">
-          <p class="project-title">Coding Blocks Course</p>
-        </div>
       </div>
     </div>
   </section>
 
-  <section class="section animate" id="contact">
+  <section class="section" id="contact">
     <h2>Contact</h2>
     <p>Email: edgardo.boragay@example.com</p>
   </section>
@@ -251,7 +266,6 @@
     <p>&copy; 2025 Edgardo Boragay Jr</p>
   </footer>
 
-  <!-- Carousel Auto Slide Script -->
   <script>
     const carousel = document.querySelector('.carousel-wrapper');
     const slides = document.querySelectorAll('.carousel-slide');
@@ -259,12 +273,11 @@
 
     function showNextSlide() {
       index = (index + 1) % slides.length;
-      carousel.style.transform = translateX(-${index * 100}%);
+      carousel.style.transform = `translateX(-${index * 100}%)`;
     }
 
     setInterval(showNextSlide, 3500);
 
-    // Swipe for touch screens
     let startX = 0;
     const container = document.getElementById('carousel');
 
@@ -277,7 +290,7 @@
       if (startX - endX > 50) showNextSlide();
       if (endX - startX > 50) {
         index = (index - 1 + slides.length) % slides.length;
-        carousel.style.transform = translateX(-${index * 100}%);
+        carousel.style.transform = `translateX(-${index * 100}%)`;
       }
     });
   </script>
