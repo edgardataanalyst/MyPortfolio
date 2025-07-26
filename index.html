@@ -280,6 +280,73 @@
       transform: scale(1.2);
       filter: brightness(1.2);
     }
+/* === Contact Section === */
+  .contact-section {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.contact-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-container h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.contact-container p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.contact-form button {
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #0056b3;
+}
+
+.contact-socials {
+  margin-top: 30px;
+}
+
+.contact-socials a {
+  font-size: 30px;
+  color: #444;
+  margin: 0 10px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-socials a:hover {
+  color: #007bff;
+  transform: scale(1.2);
+}
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
@@ -456,14 +523,44 @@
       <li>Integrated modules such as GSM, RFID, and LCD with Arduino for school-use innovations</li>
     </ul>
     </div>
+     <div class="project-card">
+      <h4>Scratch</h4>
+      <ul>
+      <li>Taught fundamental programming concepts using Scratch to junior high school students</li>
+      <li>Designed interactive games and animations to enhance student creativity and logic</li>
+      <li>Integrated storytelling with coding to build engaging educational projects</li>
+    </ul>
+    </div>
+     <div class="project-card">
+      <h4>JAVA</h4>
+      <ul>
+      <li>Created basic console applications to demonstrate object-oriented programming (OOP) concepts</li>
+      <li>Taught Java syntax, control structures, and data types in a beginner-friendly approach</li>
+      <li>Provided real-world Java coding scenarios aligned with academic requirements</li>
+    </ul>
+    </div>
   </div>
 </section>
+  <!-- 📘 Contact Section -->
+  <section id="contact" class="contact-section">
+  <div class="contact-container">
+    <h2>Contact Me</h2>
+    <p>If you'd like to work together or have any questions, feel free to send a message.</p>
 
-  <section class="section" id="contact">
-    <h2>Contact</h2>
-    <p>Email: edgardoboragay21@gmail.com</p>
-    <a href="resume.pdf" class="download-resume" download>Download Resume (PDF)</a>
-  </section>
+    <form action="https://formspree.io/f/yourformid" method="POST" class="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="contact-socials">
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-square"></i></a>
+      <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:youremail@example.com"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+</section>
 
   <footer>
     <p>&copy; My Portfolio | Edgardo Rivera Boragay Jr.</p>
