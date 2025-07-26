@@ -181,40 +181,37 @@
     }
     
   /* === Project list === */
-    .project-list {
-      margin-top: 50px;
-      display: grid;
+       .project-list {
+      display: flex;
+      flex-direction: column;
       gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      max-width: 1000px;
-      width: 100%;
-      padding: 0 10px;
-      animation: fadeIn 1s ease-in;
+      padding: 20px;
     }
     
     .project-card {
-      background: #111;
-      padding: 20px;
+      background-color: #fff;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0, 204, 255, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 0 14px #00ccff;
+      padding: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     }
     
     .project-card h4 {
-      color: #00ccff;
-      margin-bottom: 8px;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #333;
     }
     
-    .project-card p {
-      font-size: 14px;
-      line-height: 1.4;
-      color: #ccc;
+    .project-card ul {
+      padding-left: 20px;
+      list-style-type: disc;
+      color: #555;
     }
+    
+    .project-card li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
 
   /* === software icons === */
     .software-icons {
@@ -381,19 +378,44 @@
   <div class="project-list">
     <div class="project-card">
       <h4>School RFID Attendance System</h4>
-      <p>Developed a custom RFID solution integrated with Excel and QR for real-time attendance tracking.</p>
+      <ul>
+      <li>Developed a custom RFID tap-in/tap-out system</li>
+      <li>Integrated with Excel and MySQL database</li>
+      <li>Used QR codes for backup attendance logging</li>
+      <li>Real-time dashboard and SMS alerts to parents</li>
+    </ul>
     </div>
     <div class="project-card">
-      <h4>Learning Management Website</h4>
-      <p>Built a web-based LMS using HTML, CSS, and JavaScript for class modules, submissions, and grading.</p>
+      <h4>Student Portal Web System</h4>
+    <ul>
+      <li>Designed a responsive web portal using HTML, CSS, and PHP</li>
+      <li>Includes login, student data management, and search features</li>
+      <li>Connected to MySQL for secure data handling</li>
+    </ul>
     </div>
     <div class="project-card">
       <h4>Power BI Dashboards</h4>
-      <p>Created interactive dashboards for student performance analysis and administrative reporting.</p>
+      <ul>
+      <li>Designed and developed interactive dashboards and reports for school performance and attendance tracking</li>
+      <li>Customized visualizations for administrative and academic reporting</li>
+      <li>Shared reports securely via Power BI Service for decision-making</li>
+    </ul>
     </div>
     <div class="project-card">
-      <h4>Robotics and Java Curriculum</h4>
-      <p>Designed teaching modules and led hands-on training for Arduino, Scratch, and basic Java development.</p>
+      <h4>HTML & CSS</h4>
+      <ul>
+      <li>Built responsive and accessible web pages for school portals and student profiles</li>
+      <li>Ensured mobile optimization and cross-browser compatibility</li>
+      <li>Created reusable components and layouts for consistent design</li>
+    </ul>
+    </div>
+    <div class="project-card">
+      <h4>Robotics (Arduino Project)</h4>
+      <ul>
+      <li>Developed hands-on microcontroller projects for student learning (e.g., RFID attendance, sensors, and automation)</li>
+      <li>Programmed Arduino boards using C/C++ for real-time data collection and control</li>
+      <li>Integrated modules such as GSM, RFID, and LCD with Arduino for school-use innovations</li>
+    </ul>
     </div>
   </div>
 </section>
