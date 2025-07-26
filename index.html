@@ -206,11 +206,60 @@
       }
     }
   </style>
-<body>
-  <!-- Unchanged HTML content from your post -->
-  <!-- Your header, sections, carousel, contact, footer, and JS remain the same -->
+</head>
 
-  <!-- Carousel Auto Slide Script -->
+<body>
+  <!-- Optional Background Video -->
+  <!-- <video class="bg-video" autoplay muted loop>
+    <source src="your-background.mp4" type="video/mp4" />
+  </video> -->
+
+  <header>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="section">
+    <img src="your_profile.png" alt="My Profile" class="profile-pic" />
+    <h1>Hello, I'm <span style="color: #00ccff;">Your Name</span></h1>
+    <p class="position-title">Creative Developer & Designer</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+    </div>
+    <a href="#" class="download-resume">Download Resume</a>
+  </section>
+
+  <!-- Carousel Section -->
+  <section class="section" id="projects">
+    <h2 style="color: #00ccff;">My Projects</h2>
+    <div class="carousel-container" id="carousel">
+      <div class="carousel-wrapper">
+        <div class="carousel-slide">
+          <img src="project1.png" alt="Project 1" />
+          <div class="project-title">Project 1: Logo Design</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="project2.png" alt="Project 2" />
+          <div class="project-title">Project 2: Poster Design</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="project3.png" alt="Project 3" />
+          <div class="project-title">Project 3: Web Mockup</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Your Name. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Carousel Auto Slide + Swipe -->
   <script>
     const carousel = document.querySelector('.carousel-wrapper');
     const slides = document.querySelectorAll('.carousel-slide');
@@ -223,7 +272,7 @@
 
     setInterval(showNextSlide, 3500);
 
-    // Swipe for touch screens
+    // Swipe for mobile
     let startX = 0;
     const container = document.getElementById('carousel');
 
