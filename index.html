@@ -179,7 +179,49 @@
       color: #00ccff;
       animation: fadeInUp 0.8s ease;
     }
+    
+  /* === Project list === */
+    .project-list {
+      margin-top: 50px;
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      max-width: 1000px;
+      width: 100%;
+      padding: 0 10px;
+      animation: fadeIn 1s ease-in;
+    }
+    
+    .project-card {
+      background: #111;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 204, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 14px #00ccff;
+    }
+    
+    .project-card h4 {
+      color: #00ccff;
+      margin-bottom: 8px;
+    }
+    
+    .project-card p {
+      font-size: 14px;
+      line-height: 1.4;
+      color: #ccc;
+    }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+    
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -295,6 +337,65 @@
       </div>
     </div>
   </section>
+<section class="section" id="portfolio">
+  <h2>Portfolio</h2>
+  <div class="carousel-container" id="carousel">
+    <div class="carousel-wrapper">
+      <div class="carousel-slide">
+        <img src="arduino project.png" alt="Project 1">
+        <p class="project-title">Robotics Course</p>
+      </div>
+      <div class="carousel-slide">
+        <img src="rfid.png" alt="Project 2">
+        <p class="project-title">RFID Attendance System</p>
+      </div>
+      <div class="carousel-slide">
+        <img src="powerbi.jpeg" alt="Project 3">
+        <p class="project-title">Data Visualization on Power BI</p>
+      </div>
+      <div class="carousel-slide">
+        <img src="dashboard.png" alt="Project 4">
+        <p class="project-title">Dashboard in Excel</p>
+      </div>
+      <div class="carousel-slide">
+        <img src="powerbi.jpeg" alt="Project 5">
+        <p class="project-title">Java Course</p>
+      </div>
+      <div class="carousel-slide">
+        <img src="Scratch.png" alt="Project 6">
+        <p class="project-title">Code Blocks Course</p>
+      </div>
+      <div class="carousel-slide">
+        <img src="website.jpg" alt="Project 7">
+        <p class="project-title">Website Development</p>
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="prev">&#10094;</button>
+      <button class="carousel-btn" id="next">&#10095;</button>
+    </div>
+  </div>
+
+  <!-- 📘 ADDED PROJECT LIST -->
+  <div class="project-list">
+    <div class="project-card">
+      <h4>School RFID Attendance System</h4>
+      <p>Developed a custom RFID solution integrated with Excel and QR for real-time attendance tracking.</p>
+    </div>
+    <div class="project-card">
+      <h4>Learning Management Website</h4>
+      <p>Built a web-based LMS using HTML, CSS, and JavaScript for class modules, submissions, and grading.</p>
+    </div>
+    <div class="project-card">
+      <h4>Power BI Dashboards</h4>
+      <p>Created interactive dashboards for student performance analysis and administrative reporting.</p>
+    </div>
+    <div class="project-card">
+      <h4>Robotics and Java Curriculum</h4>
+      <p>Designed teaching modules and led hands-on training for Arduino, Scratch, and basic Java development.</p>
+    </div>
+  </div>
+</section>
 
   <section class="section" id="contact">
     <h2>Contact</h2>
