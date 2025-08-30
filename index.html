@@ -302,53 +302,64 @@
       filter: brightness(1.2);
     }
       
-/* === CONTACT SECTION === */
+/* === Contact Section === */
 #contact {
   padding: 80px 20px;
-  background: #0a192f;
-  color: #fff;
+  background: #0d1b2a;
   text-align: center;
+  color: #fff;
 }
 
-.section-title {
+#contact .section-title {
   font-size: 2.5rem;
-  margin-bottom: 15px;
+  margin-bottom: 40px;
   color: #64ffda;
 }
 
-.contact-subtitle {
-  font-size: 1.2rem;
+/* Contact Info */
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
   margin-bottom: 30px;
-  color: #ddd;
 }
 
 .contact-info p {
-  margin: 8px 0;
   font-size: 1rem;
   color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
 .contact-info i {
   color: #64ffda;
-  margin-right: 8px;
+  font-size: 1.3rem;
 }
 
 /* Contact Form */
 .contact-form {
-  max-width: 600px;
-  margin: 0 auto 40px auto;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  max-width: 600px;
+  margin: 0 auto 30px;
 }
 
 .contact-form input,
 .contact-form textarea {
-  padding: 12px;
+  padding: 12px 15px;
   border: none;
   border-radius: 8px;
-  outline: none;
+  background: #1b263b;
+  color: #fff;
   font-size: 1rem;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #aaa;
 }
 
 .contact-form button {
@@ -356,33 +367,39 @@
   background: #64ffda;
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
+  color: #0d1b2a;
   font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 .contact-form button:hover {
   background: #52e0c4;
-  transform: scale(1.05);
 }
 
-/* Social Icons */
+/* Social Media Icons */
 .social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+  margin-top: 20px;
 }
 
 .social-icons a {
-  color: #64ffda;
+  color: #fff;
+  margin: 0 10px;
   font-size: 1.5rem;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 .social-icons a:hover {
-  color: #fff;
-  transform: translateY(-5px);
+  color: #64ffda;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-info {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 }
 
 /* Footer */
@@ -570,11 +587,10 @@ footer {
   </div>
 </section>
 
-  <!-- === CONTACT SECTION === -->
+<!-- ===== Contact Section ===== -->
 <section id="contact">
   <div class="container">
     <h2 class="section-title">Contact Me</h2>
-    <p class="contact-subtitle">Feel free to reach out for collaborations or just a friendly hello 👋</p>
 
     <!-- Contact Info -->
     <div class="contact-info">
@@ -587,11 +603,11 @@ footer {
     <form class="contact-form">
       <input type="text" placeholder="Your Name" required>
       <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
 
-    <!-- Social Icons -->
+    <!-- Social Media -->
     <div class="social-icons">
       <a href="https://www.facebook.com/edgarboragay21/" target="_blank"><i class="fab fa-facebook-f"></i></a>
           <a href="https://www.instagram.com/edgarboragay/" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -650,5 +666,6 @@ footer {
   </script>
 </body>
 </html>
+
 
 
