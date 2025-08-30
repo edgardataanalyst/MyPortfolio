@@ -20,7 +20,7 @@
     header h1 {
       margin: 0;
       font-size: 2.5rem;
-      color: #FFD700; /* same gold title style */
+      color: #FFD700;
     }
     .timeline {
       max-width: 900px;
@@ -37,12 +37,12 @@
     .job h3 {
       margin: 0;
       font-size: 1.3rem;
-      color: #87CEEB; /* light blue for job position */
+      color: #87CEEB;
     }
     .job h4 {
       margin: 5px 0;
       font-size: 1rem;
-      color: #FFD700; /* gold for company */
+      color: #FFD700;
     }
     .job p {
       margin: 5px 0;
@@ -52,6 +52,36 @@
       font-style: italic;
       color: #ccc;
       margin-bottom: 10px;
+    }
+    /* Go Back Button */
+    .go-back {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    /* Background video */
+    .bg-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
+      filter: brightness(0.5);
+    }
+    
+    .go-back a {
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .go-back a:hover {
+      background: rgba(0,0,0,0.9);
     }
   </style>
 </head>
@@ -63,75 +93,52 @@
   <section class="timeline">
     <div class="job">
       <div class="date">January 2019 – Present</div>
-      <h3>IT | Administrative</h3>
+      <h3>IT & Administrative Specialist</h3>
       <h4>New Life Christian School of Cavite, Inc.</h4>
-      <p>Provided IT support, including software/hardware maintenance and data management.</p>
-      <p>Developed online systems such as grading sheets, admission forms, and automated workflows.</p>
-      <p>Designed marketing materials (posters, videos) and managed social media presence to boost online visibility.</p>
-      <p>Conducted ICT tutorial classes, helping students build technical skills and apply concepts in practice.</p>
+      <ul>
+        <li>Provided IT support, including software/hardware maintenance and data management.</li>
+        <li>Developed online systems: grading sheets, admission forms, and automated workflows.</li>
+        <li>Designed marketing materials (posters, videos) and managed social media presence.</li>
+        <li>Conducted ICT tutorial classes for students to enhance technical skills.</li>
+      </ul>
     </div>
 
     <div class="job">
       <div class="date">June 2023 – December 2023</div>
-      <h3>Website Developer | Data Entry</h3>
+      <h3>Website Developer & Data Entry Specialist</h3>
       <h4>Ofel Logistics Services (NAI, Parañaque City)</h4>
-      <p>Designed and managed a web-based shipping monitoring system.</p>
-      <p>Optimized data entry processes and built automated invoicing solutions.</p>
-      <p>Created visual reports and dashboards to improve decision-making.</p>
+      <ul>
+        <li>Designed and managed a web-based shipping monitoring system.</li>
+        <li>Optimized data entry processes and automated invoicing solutions.</li>
+        <li>Created dashboards and visual reports for better decision-making.</li>
+      </ul>
     </div>
 
     <div class="job">
       <div class="date">January 2016 – October 2018</div>
-      <h3>Sales Executive | Loan Specialist</h3>
+      <h3>Sales Executive & Loan Specialist</h3>
       <h4>China Trust Bank Philippine Corp. (CTBC Bank)</h4>
-      <p>Developed client portfolios and handled loan applications.</p>
-      <p>Maintained strong customer relationships to drive sales growth.</p>
-      <p>Provided financial advice and solutions tailored to client needs.</p>
+      <ul>
+        <li>Managed client portfolios and handled loan applications.</li>
+        <li>Maintained strong customer relationships to drive sales growth.</li>
+        <li>Provided tailored financial advice and solutions for clients.</li>
+      </ul>
     </div>
 
     <div class="job">
       <div class="date">April 2010 – October 2014</div>
-      <h3>Housekeeping Supervisor | Leadman</h3>
+      <h3>Housekeeping Supervisor & Leadman</h3>
       <h4>Dream Hotel (Eurotel Corporation)</h4>
-      <p>Supervised daily housekeeping operations, ensuring compliance with cleanliness standards and guest satisfaction.</p>
-      <p>Trained and managed housekeeping staff, monitored performance, and implemented quality control measures.</p>
-      <p>Coordinated with other departments for smooth hotel operations and handled guest requests professionally.</p>
-    </div>
-
-    <div class="job">
-      <div class="date">March 2009 – August 2009</div>
-      <h3>Service Staff</h3>
-      <h4>Chow Rite Foods, Inc.</h4>
-      <p>Assisted in food preparation and ensured timely service in a fast-paced kitchen environment.</p>
-    </div>
-
-    <div class="job">
-      <div class="date">July 2008 – December 2008</div>
-      <h3>Service Crew</h3>
-      <h4>Tropical Hut Foodmart, Inc.</h4>
-      <p>Provided excellent customer service while handling kitchen and front-line tasks.</p>
-    </div>
-
-    <div class="job">
-      <div class="date">January 2008 – June 2008</div>
-      <h3>Service Crew</h3>
-      <h4>Tropical Hut Foodmart, Inc.</h4>
-      <p>Maintained cleanliness and hygiene standards in food preparation and dining areas.</p>
-    </div>
-
-    <div class="job">
-      <div class="date">July 2007 – December 2007</div>
-      <h3>Kitchen Crew</h3>
-      <h4>Japan Franchise Corporation</h4>
-      <p>Supported senior staff in cooking, plating, and serving meals efficiently.</p>
-    </div>
-
-    <div class="job">
-      <div class="date">June 2006 – November 2006</div>
-      <h3>Service Crew</h3>
-      <h4>Tropical Hut Foodmart, Inc.</h4>
-      <p>Maintained cleanliness and hygiene standards in food preparation and dining areas.</p>
+      <ul>
+        <li>Supervised housekeeping operations ensuring guest satisfaction.</li>
+        <li>Trained staff, monitored performance, and implemented quality control.</li>
+        <li>Coordinated with other departments for smooth hotel operations.</li>
+      </ul>
     </div>
   </section>
+
+  <div class="go-back">
+    <a href="index.html">⬅ Go Back</a>
+  </div>
 </body>
 </html>
