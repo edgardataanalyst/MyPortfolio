@@ -63,9 +63,8 @@
     }
 
     .projects h3 {
-      color: #00BFFF; /* light blue */
-    }
-
+  color: #00BFFF; /* light blue */
+}
     .project-card {
       background: rgba(0,0,0,0.6);
       margin: 20px auto;
@@ -111,16 +110,24 @@
       margin-bottom: 8px;
     }
 
-    /* Responsive Header Navigation */
-nav {
+    /* Center container */
+.project-container {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap; /* para mag-wrap yung links */
-  gap: 15px;
-} 
+  align-items: center;
+  margin: 20px 0;
+}
+
+/* Responsive iframe */
+.project-container iframe {
+  width: 100%;
+  max-width: 500px;   /* limit width sa desktop */
+  aspect-ratio: 4 / 3; /* maintain proportion */
+  border: none;
+  border-radius: 10px;
+}
   </style>
 </head>
-  
 <body>
   <!-- Background Video -->
   <video autoplay muted loop playsinline class="bg-video">
@@ -130,21 +137,50 @@ nav {
   <!-- Navigation -->
   <header>
     <nav>
-      <a href="experience.html">Work Experience</a>
-      <a href="skills.html">Expertise</a>
+      <a href="index.html">Home</a>
+      <a href="Work_Experience.html">Work Experience</a>
     </nav>
   </header>
 
   <!-- Projects Section -->
   <section class="projects">
-    <h2>My Projects</h2>
+    <h2>My Recent Projects</h2>
+
+<!-- Project 1.1 -->
+    <div class="project-card">
+      <h3>SCRATCH Programming – Teaching Basic Fundamentals of Code Blocks (Grade 9)</h3>
+      <div class="project-container">
+  
+        <iframe src="https://scratch.mit.edu/projects/1195317705/embed" allowtransparency="true" 
+    scrolling="no" allowfullscreen></iframe>
+</div>
+
+      <div class="image-scroll">
+        <img src="b1.jpg" alt="Scratch Project 1">
+        <img src="b1.jpg" alt="Scratch Project 2">
+        <img src="b1.jpg" alt="Scratch Project 3">
+        <img src="b1.jpg" alt="Scratch Project 4">
+        <img src="b1.jpg" alt="Scratch Project 5">
+      </div>
+      <ul>
+        <h3>Duties and Responsibilities</h3>
+        <li>Taught the fundamental code blocks: motion, looks, sound, events, control, sensing, operators, and variables</li>
+        <li>Guided students in building simple projects like interactive animations, games, and stories</li>
+        <li>Explained basic logic flow (sequence, loops, conditionals) in a beginner-friendly way</li>
+        <h3>Accomplishments</h3>
+        <li>Enabled students with no prior coding knowledge to create functional Scratch projects</li>
+        <li>Boosted student engagement and creativity in programming activities</li>
+        <li>Developed students’ logical thinking and problem-solving skills</li>
+      </ul>
+    </div>
 
     <!-- Project 1 -->
     <div class="project-card">
       <h3>In/Out RFID Attendance System (HTML, PHP, MySQL)</h3>
       <div class="image-scroll">
-        <img src="r2.jpg" alt="RFID Project 1">
-        <img src="r1.png" alt="RFID Project 2">
+        <img src="r1.png" alt="RFID Project 1">
+        <img src="r2.jpg" alt="RFID Project 2">
+       
       </div>
       <ul>
         <h3>Duties and Responsibilities</h3>
@@ -181,9 +217,10 @@ nav {
        <li>Reduced manual tracking inquiries by automating cargo status updates</li>
        <li>Received positive feedback from the client, leading to trust and potential future projects</li>
       </ul>
+      
     </div>
 
-     <!-- Project 3 -->
+    <!-- Project 3 -->
     <div class="project-card">
       <h3>Grading Sheet Automation</h3>
       <div class="image-scroll">
@@ -204,7 +241,7 @@ nav {
         <li>Delivered a cost-free solution using Google’s free tools (no software purchase needed)</li>
       </ul>
     </div>
-    
+
     <!-- Project 4 -->
     <div class="project-card">
       <h3>Infographics & Video Editing (Canva + Photoshop)</h3>
@@ -227,7 +264,7 @@ nav {
       </ul>
     </div>
 
-   <!-- Project 5 -->
+    <!-- Project 5 -->
     <div class="project-card">
       <h3>Software & Hardware Support</h3>
       <div class="image-scroll">
@@ -249,7 +286,7 @@ nav {
         <li>Reduced downtime by quickly diagnosing and resolving software/hardware issues</li>
       </ul>
     </div>
-    
+
     <!-- Project 6 -->
     <div class="project-card">
       <h3>Sales Dashboard & Data Analytics (Excel, PowerBI, Google Sheets)</h3>
@@ -257,8 +294,8 @@ nav {
         <img src="d1.PNG" alt="Support 1">
         <img src="d2.PNG" alt="Support 2">
         <img src="d3.jpg" alt="Support 3">
-        <img src="d4.jpg" alt="Support 4">
-        <img src="d5.jfif" alt="Support 5">
+        <img src="d1.jpg" alt="Support 4">
+        <img src="d1.jfif" alt="Support 5">
       </div>
       <ul>
         <h3>Duties and Responsibilities</h3>
@@ -272,7 +309,7 @@ nav {
         <li>Increased efficiency by transforming raw data into actionable insights</li>
       </ul>
     </div>
-    
+
         <!-- Go Back Button -->
     <div style="text-align: center; margin: 40px 0;">
       <a href="index.html" 
@@ -289,17 +326,4 @@ nav {
   </section>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
