@@ -106,8 +106,30 @@
     .project-card ul li {
       margin-bottom: 8px;
     }
+
+    /* Responsive Header Navigation */
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* para mag-wrap yung links */
+  gap: 15px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  nav a {
+    display: block;
+    margin: 8px 0;
+    font-size: 16px;
+  }
+  nav {
+    flex-direction: column; /* stack vertically */
+    align-items: center;
+  }
+}  
   </style>
 </head>
+  
 <body>
   <!-- Background Video -->
   <video autoplay muted loop playsinline class="bg-video">
@@ -219,6 +241,7 @@
   </section>
 </body>
 </html>
+
 
 
 
