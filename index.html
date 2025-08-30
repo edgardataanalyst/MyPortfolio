@@ -241,6 +241,27 @@
   box-shadow: 0 8px 20px rgba(0, 132, 255, 0.5);
 }
 
+    /* Responsive Header Navigation */
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* para mag-wrap yung links */
+  gap: 15px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  nav a {
+    display: block;
+    margin: 8px 0;
+    font-size: 16px;
+  }
+  nav {
+    flex-direction: column; /* stack vertically */
+    align-items: center;
+  }
+}
+
   </style>
 </head>
 
@@ -376,5 +397,6 @@
   </script>
 </body>
 </html>
+
 
 
