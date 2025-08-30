@@ -4,212 +4,204 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>myPortfolio</title>
-
-  <!-- Font Awesome (icons) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    :root{
-      --accent:#64ffda;
-      --accent-2:#00ccff;
-      --bg:#000000;
-      --bg-2:#0a192f;
-      --bg-3:#061423;
-      --text:#ffffff;
-      --muted:#a8b2d1;
-    }
-
-    /* Reset */
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:'Segoe UI',system-ui,-apple-system,Arial,Helvetica,sans-serif;
+    * {margin:0;padding:0;box-sizing:border-box;}
+    body {
+      font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to bottom right, #000000, #1a1a1a);
-      color: var(--text);
+      color: #ffffff;
+      scroll-behavior: smooth;
     }
 
-    /* Fixed header */
-    header{
-      position:fixed;top:0;left:0;right:0;
-      background:rgba(0,0,0,.9);
-      padding:16px 12px;
-      z-index:1000;
-      text-align:center;
-      backdrop-filter:saturate(120%) blur(6px);
-      border-bottom:1px solid rgba(255,255,255,.08);
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 20px;
+      text-align: center;
+      z-index: 1000;
     }
-    nav a{
-      color:#fff;text-decoration:none;font-weight:600;
-      margin:0 14px;
+    nav a {
+      color: #ffffff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
     }
-    nav a:hover{color:var(--accent-2)}
+    nav a:hover { color: #00ccff; }
 
-    /* Sections */
-    section{padding:100px 20px 60px;min-height:100vh;scroll-margin-top:84px;}
-    .section{display:flex;flex-direction:column;align-items:center;text-align:center}
-
-    /* BG video */
-    .bg-video{
-      position:fixed;inset:0;min-width:100vw;min-height:100vh;
-      object-fit:cover;z-index:-1;opacity:.20;filter:brightness(.5) blur(1px);
-      pointer-events:none;
+    section {
+    padding: 60px 20px;   /* mas maliit para hindi masyadong malayo */
+    min-height: auto;     /* inalis ko yung fixed full screen height */
+    }
+    .section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px; /* para pantay lang spacing ng laman */
+    }
+    .profile-pic {
+      max-width: 100%;
+      width: 380px;
+      margin-bottom: 20px;
+      animation: zoomInFade 1.2s ease forwards;
+      filter: drop-shadow(0 0 9px #00ccff);
+    }
+    @keyframes zoomInFade {
+      0% {opacity:0;transform:scale(0.7);}
+      100% {opacity:1;transform:scale(1);}
     }
 
-    /* About */
-    .profile-pic{
-      max-width:100%;width:380px;margin-bottom:20px;
-      animation:zoomInFade 1.2s ease forwards;
-      filter:drop-shadow(0 0 9px var(--accent-2));
-    }
-    @keyframes zoomInFade{0%{opacity:0;transform:scale(.7)}100%{opacity:1;transform:scale(1)}}
-    .position-title{font-size:20px;color:var(--accent-2);margin:10px 0 20px}
+    .position-title { font-size: 20px;color:#00ccff;margin:10px 0 20px; }
 
-    /* Social icons (About) */
-    #about .social-icons a{
-      color:#fff;font-size:24px;margin:0 10px;transition:color .3s ease,transform .3s ease;
+    .social-icons a {
+      color:#fff;font-size:24px;margin:0 10px;
+      transition: color .3s ease;
     }
-    #about .social-icons a:hover{color:var(--accent-2);transform:translateY(-3px)}
+    .social-icons a:hover { color:#00ccff; }
 
-    /* Software icons */
-    .software-icons{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;margin-top:20px}
-    .software-icons i,.software-icons img{
-      font-size:40px;width:30px;height:30px;transition:transform .3s ease,filter .3s ease;cursor:pointer
-    }
-    .software-icons img.custom-icon{object-fit:contain;filter:drop-shadow(0 2px 3px rgba(0,0,0,.3))}
-    .software-icons i:hover,.software-icons img:hover{transform:scale(1.2);filter:brightness(1.2)}
+    footer { text-align:center;padding:20px;background:#000;color:#fff;}
 
-    /* Carousel */
-    .carousel-container{width:90%;max-width:800px;overflow:hidden;margin-top:40px;position:relative}
-    .carousel-wrapper{display:flex;transition:transform .5s ease-in-out}
-    .carousel-slide{min-width:100%;flex-shrink:0;text-align:center}
-    .carousel-slide img{
-      width:100%;max-height:400px;object-fit:contain;border-radius:10px;
-      box-shadow:0 0 12px rgba(0,204,255,.4)
+    .bg-video {
+      position:fixed;top:0;left:0;min-width:100vw;min-height:100vh;
+      object-fit:cover;z-index:-1;opacity:0.20;
+      filter:brightness(0.5) blur(1px);pointer-events:none;
     }
-    .carousel-controls{
-      position:absolute;top:50%;left:0;right:0;display:flex;justify-content:space-between;
-      transform:translateY(-50%);pointer-events:none
+
+    /* === Carousel === */
+    .carousel-container {
+      width: 90%;max-width:800px;overflow:hidden;margin-top:40px;position:relative;
     }
-    .carousel-btn{
-      background:rgba(0,0,0,.6);color:var(--accent-2);border:none;font-size:24px;
+    .carousel-wrapper { display:flex;transition:transform .5s ease-in-out;}
+    .carousel-slide { min-width:100%;flex-shrink:0;text-align:center;}
+    .carousel-slide img {
+      width:100%;max-height:400px;object-fit:contain;
+      border-radius:10px;box-shadow:0 0 12px rgba(0,204,255,0.4);
+    }
+    .carousel-controls {
+      position:absolute;top:50%;width:100%;display:flex;justify-content:space-between;
+      transform:translateY(-50%);pointer-events:none;
+    }
+    .carousel-btn {
+      background:rgba(0,0,0,0.6);color:#00ccff;border:none;font-size:24px;
       padding:10px 16px;cursor:pointer;pointer-events:auto;border-radius:50%;
-      transition:background .3s ease
+      transition:background .3s ease;
     }
-    .carousel-btn:hover{background:rgba(0,0,0,.9)}
-    .project-title{margin-top:10px;font-size:18px;color:var(--accent-2);animation:fadeInUp .8s ease}
-    @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .carousel-btn:hover {background:rgba(0,0,0,0.9);}
+    .project-title {margin-top:10px;font-size:18px;color:#00ccff;animation:fadeInUp .8s ease;}
 
-    /* Projects */
-    .project-list{display:flex;flex-wrap:wrap;gap:30px;justify-content:center}
-    .project-card{
-      background:rgba(0,0,0,.4);backdrop-filter:blur(10px);
-      border:1px solid rgba(255,255,255,.1);box-shadow:0 8px 24px rgba(0,0,0,.4);
+    /* === Projects === */
+    #projects {padding:80px 20px;text-align:center;}
+    .section-title {font-size:2.5rem;margin-bottom:30px;color:#fff;}
+    .project-list {
+      display:flex;flex-wrap:wrap;gap:30px;justify-content:center;
+    }
+    .project-card {
+      background:rgba(0,0,0,0.4);backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,0.1);
+      box-shadow:0 8px 24px rgba(0,0,0,0.4);
       border-radius:15px;width:300px;padding:25px;text-align:left;
-      transition:transform .4s ease,box-shadow .4s ease,border-color .4s ease;animation:slideIn 1s ease forwards
+      transition:transform .4s ease, box-shadow .4s ease;
+      animation:slideIn 1s ease forwards;position:relative;
     }
-    .project-card h4{font-size:20px;margin-bottom:10px;color:#fff}
-    .project-card ul{padding-left:20px;list-style:disc;color:#ddd}
-    .project-card li{margin-bottom:8px}
-    .project-card:hover{transform:translateY(-10px);box-shadow:0 0 15px rgba(0,132,255,.6);border-color:#0084ff}
-    @keyframes slideIn{0%{opacity:0;transform:translateY(40px)}100%{opacity:1;transform:translateY(0)}}
+    .project-card h4 {font-size:20px;margin-bottom:10px;color:#fff;}
+    .project-card ul {padding-left:20px;list-style:disc;color:#ddd;}
+    .project-card li {margin-bottom:8px;}
+    .project-card:hover {
+      transform:translateY(-10px);
+      box-shadow:0 0 15px rgba(0,132,255,0.6);border-color:#0084ff;
+    }
+    @keyframes slideIn {0%{opacity:0;transform:translateY(40px);}100%{opacity:1;transform:translateY(0);} }
 
-    /* ===== CONTACT (3 cols desktop, 1 col mobile) ===== */
-    #contact{
-      padding:80px 20px;background:var(--bg-2);text-align:center;color:#fff;
+    /* === Software Icons === */
+    .software-icons {
+      display:flex;flex-wrap:wrap;justify-content:center;gap:15px;margin-top:20px;
     }
-    #contact .section-title{font-size:2.5rem;margin-bottom:16px;color:var(--accent)}
-    #contact .contact-subtitle{font-size:1.05rem;margin-bottom:32px;color:#ddd}
+    .software-icons i {font-size:40px;transition:transform .3s ease, filter .3s ease;cursor:pointer;}
+    .software-icons i:hover {transform:scale(1.2);filter:brightness(1.2);}
 
-    .contact-grid{
-      width:min(1100px,92%);
-      margin:0 auto;
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:24px;
-      align-items:start;
-    }
-
-    /* Column cards */
-    .card{
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:16px;
-      padding:22px;
-      text-align:center;
-      box-shadow:0 10px 30px rgba(0,0,0,.25);
-    }
-
-    /* Contact details list */
-    .details{
-      display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;
-    }
-    .detail-item{
-      display:flex;align-items:center;gap:10px;justify-content:center;
-      color:#e6f1ff;font-size:1rem
-    }
-    .detail-item i{color:var(--accent);font-size:1.2rem}
-
-    /* Contact form (centered inputs) */
-    .contact-form{
-      display:flex;flex-direction:column;gap:12px;align-items:center
-    }
-    .contact-form input,.contact-form textarea{
-      width:100%;max-width:520px;
-      padding:12px 14px;border:none;border-radius:10px;
-      background:#1b263b;color:#fff;outline:none;font-size:1rem
-    }
-    .contact-form input::placeholder,.contact-form textarea::placeholder{color:#9fb3c8}
-    .contact-form button{
-      padding:12px 20px;background:var(--accent);color:#0d1b2a;border:none;border-radius:10px;
-      font-weight:700;cursor:pointer;transition:.25s ease
-    }
-    .contact-form button:hover{transform:translateY(-1px);filter:brightness(1.05)}
-
-    /* Social links */
-    .socials{
-      display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:6px
-    }
-    .socials a{
-      color:#fff;font-size:18px;display:inline-flex;align-items:center;justify-content:center;
-      width:40px;height:40px;border-radius:999px;
-      background:rgba(255,255,255,.1);transition:.25s ease
-    }
-    .socials a:hover{background:var(--accent);color:#0d1b2a;transform:translateY(-3px)}
-
-    /* Footer (readable!) */
-    footer{
-      padding:20px;background:var(--bg-3);text-align:center;color:var(--muted);font-size:.95rem;
-      border-top:1px solid rgba(255,255,255,.08)
-    }
-    footer a{color:var(--accent);text-decoration:none}
-    footer a:hover{text-decoration:underline}
-
-    /* ===== Responsive ===== */
-    @media (max-width: 992px){
-      .contact-grid{grid-template-columns:1fr;gap:18px}
-    }
-    @media (max-width: 768px){
-      .profile-pic{width:90%}
-      .carousel-slide img{max-height:260px}
-      .position-title{font-size:17px}
-      .project-title{font-size:16px}
-    }
-    @media (max-width:480px){
-      .carousel-slide img{max-height:200px}
-      .project-title{font-size:15px}
-      .position-title{font-size:16px}
-    }
+    /* === Contact Section === */
+#contact {
+  padding:80px 20px;
+  background:#0d1b2a;
+  text-align:center;
+  color:#fff;
+}
+#contact .section-title {
+  font-size:2.5rem;
+  margin-bottom:40px;
+  color:#00ccff; /* 🔹 same as job position */
+}
+.contact-info {
+  max-width:800px;
+  margin:0 auto 30px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+  text-align:center;
+}
+.contact-info p {
+  font-size:1rem;
+  color:#00ccff; /* 🔹 unify text color */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+}
+.contact-info i {
+  color:#00ccff; /* 🔹 same accent as job position */
+  font-size:1.3rem;
+}
+.contact-form {
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  max-width:600px;
+  margin:0 auto 30px;
+}
+.contact-form input,
+.contact-form textarea {
+  padding:12px 15px;
+  border:none;
+  border-radius:8px;
+  background:#1b263b;
+  color:#fff;
+  font-size:1rem;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {color:#aaa;}
+.contact-form button {
+  padding:12px;
+  background:#00ccff; /* 🔹 button same theme */
+  border:none;
+  border-radius:8px;
+  color:#0d1b2a;
+  font-weight:bold;
+  font-size:1rem;
+  cursor:pointer;
+  transition:.3s;
+}
+.contact-form button:hover {background:#009ec9;}
+.social-icons {margin-top:20px;}
+.social-icons a {
+  color:#00ccff; /* 🔹 social icons match */
+  margin:0 10px;
+  font-size:1.5rem;
+  transition:.3s;
+}
+.social-icons a:hover {color:#fff;}
+    footer {padding:20px;background:#061423;text-align:center;color:#aaa;font-size:.9rem;}
   </style>
 </head>
 
 <body>
-  <!-- Background video -->
-  <video autoplay muted loop playsinline class="bg-video">
-    <source src="bg.mp4" type="video/mp4">
-  </video>
-
-  <!-- Header -->
   <header>
+    <video autoplay muted loop playsinline class="bg-video">
+      <source src="bg.mp4" type="video/mp4">
+    </video>
     <nav>
       <a href="#about">About</a>
       <a href="#portfolio">Portfolio</a>
@@ -217,38 +209,32 @@
     </nav>
   </header>
 
-  <!-- About -->
+  <!-- ABOUT -->
   <section class="section" id="about">
     <img src="profile.png" alt="Profile Picture" class="profile-pic" />
     <h2>Edgardo Rivera Boragay Jr</h2>
-    <p class="position-title">School IT Administrative | Website Developer | Data Analyst | ICT - Teacher</p>
-
+    <p class="position-title">School IT Admin | Web Developer | Data Analyst | ICT Teacher</p>
     <div class="social-icons">
-      <a href="https://www.facebook.com/edgarboragay21/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook fa-bounce"></i></a>
-      <a href="https://www.linkedin.com/in/edgardo-boragay-2ab51725a/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin fa-bounce"></i></a>
-      <a href="https://github.com/edgardataanalyst" target="_blank" aria-label="GitHub"><i class="fab fa-github fa-bounce"></i></a>
-      <a href="https://www.instagram.com/edgarboragay/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram fa-bounce"></i></a>
+      <a href="https://www.facebook.com/edgarboragay21/" target="_blank"><i class="fab fa-facebook fa-bounce"></i></a>
+      <a href="https://www.linkedin.com/in/edgardo-boragay-2ab51725a/" target="_blank"><i class="fab fa-linkedin fa-bounce"></i></a>
+      <a href="https://github.com/edgardataanalyst" target="_blank"><i class="fab fa-github fa-bounce"></i></a>
+      <a href="https://www.instagram.com/edgarboragay/" target="_blank"><i class="fab fa-instagram fa-bounce"></i></a>
     </div>
-
-    <div class="overlay" style="max-width: 800px; padding: 10px;">
-      <p>
-        With over 6 years of experience as an IT Administrative Assistant at New Life Christian School of Cavite,
-        I specialize in technical support and instruction in programming for Junior and Senior High School students.
-      </p>
-      <div class="software-icons" aria-label="Skills">
-        <i class="fab fa-html5" style="color:#e44d26" title="HTML5"></i>
-        <i class="fab fa-css3-alt" style="color:#264de4" title="CSS3"></i>
-        <i class="fab fa-js-square" style="color:#f0db4f" title="JavaScript"></i>
-        <i class="fab fa-php" style="color:#8892be" title="PHP"></i>
-        <i class="fas fa-database" style="color:#f29111" title="MySQL"></i>
-        <i class="fas fa-code" style="color:#007acc" title="VS Code"></i>
-        <i class="fas fa-file-excel" style="color:#217346" title="Microsoft Excel"></i>
-        <i class="fab fa-python" style="color:#3776AB" title="Python"></i>
+    <div class="overlay" style="max-width:800px;padding:10px;">
+      <p>With over 6 years of experience as an IT Administrative Assistant at New Life Christian School of Cavite, I specialize in technical support and instruction in programming for Junior and Senior High School students.</p>
+      <div class="software-icons">
+        <i class="fab fa-html5" style="color:#e44d26;" title="HTML5"></i>
+        <i class="fab fa-css3-alt" style="color:#264de4;" title="CSS3"></i>
+        <i class="fab fa-js-square" style="color:#f0db4f;" title="JavaScript"></i>
+        <i class="fab fa-php" style="color:#8892be;" title="PHP"></i>
+        <i class="fas fa-database" style="color:#f29111;" title="MySQL"></i>
+        <i class="fas fa-file-excel" style="color:#217346;" title="Excel"></i>
+        <i class="fab fa-python" style="color:#3776AB;" title="Python"></i>
       </div>
     </div>
   </section>
 
-  <!-- Portfolio -->
+   <!-- Portfolio -->
   <section class="section" id="portfolio">
     <h2>Portfolio</h2>
     <p>Showcase of projects goes here.</p>
@@ -351,70 +337,46 @@
     </div>
   </section>
 
-  <!-- ===== CONTACT ===== -->
+  <!-- CONTACT -->
   <section id="contact">
-    <h2 class="section-title">Contact Me</h2>
-    <p class="contact-subtitle">Feel free to reach out for collaborations or just a friendly hello 👋</p>
-
-    <div class="contact-grid">
-      <!-- Column 1: Details -->
-      <div class="card">
-        <div class="details">
-          <div class="detail-item"><i class="fas fa-envelope"></i> edgardoboragay21@gmail.com</div>
-          <div class="detail-item"><i class="fas fa-phone"></i> +63 9957536714</div>
-          <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Silang, Cavite, Philippines</div>
-        </div>
+    <div class="container">
+      <h2 class="section-title">Contact Me</h2>
+      <div class="contact-info">
+        <p><i class="fas fa-envelope"></i> edgardoboragay21@gmail.com</p>
+        <p><i class="fas fa-phone"></i> +63 9957536714</p>
+        <p><i class="fas fa-map-marker-alt"></i> Silang, Cavite, PH</p>
       </div>
-
-      <!-- Column 2: Form -->
-      <div class="card">
-        <form class="contact-form" action="https://formspree.io/f/yourformid" method="POST">
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required>
-          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-          <button type="submit">Send Message</button>
-        </form>
-      </div>
-
-      <!-- Column 3: Socials -->
-      <div class="card">
-        <p style="margin-bottom:10px;color:#e6f1ff;font-weight:600">Connect with me</p>
-        <div class="socials">
-          <a href="https://www.facebook.com/edgarboragay21/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/edgarboragay/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.linkedin.com/in/edgardo-boragay-2ab51725a/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://github.com/edgardataanalyst" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        </div>
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/edgarboragay21/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/edgarboragay/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/edgardo-boragay-2ab51725a/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/edgardataanalyst" target="_blank"><i class="fab fa-github"></i></a>
       </div>
     </div>
   </section>
 
-  <!-- Footer (readable text color) -->
-  <footer>
-    <p>© <span id="yr"></span> Edgardo Rivera Boragay Jr. My Portfolio.</p>
-  </footer>
+  <footer><p>© Edgardo Rivera Boragay Jr. My Portfolio.</p></footer>
 
-  <!-- Carousel JS + small helpers -->
   <script>
-    // year in footer
-    document.getElementById('yr').textContent = new Date().getFullYear();
-
-    // Carousel
-    const carousel = document.querySelector('.carousel-wrapper');
-    const slides = document.querySelectorAll('.carousel-slide');
-    let index = 0;
-    function updateSlide(){ carousel.style.transform = `translateX(-${index * 100}%)`; }
-    document.getElementById('next').addEventListener('click', () => { index = (index + 1) % slides.length; updateSlide(); });
-    document.getElementById('prev').addEventListener('click', () => { index = (index - 1 + slides.length) % slides.length; updateSlide(); });
-
-    // Touch swipe
-    let startX = 0;
-    const container = document.getElementById('carousel');
-    container.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
-    container.addEventListener('touchend', e => {
-      const endX = e.changedTouches[0].clientX;
-      if (startX - endX > 50) { index = (index + 1) % slides.length; updateSlide(); }
-      if (endX - startX > 50) { index = (index - 1 + slides.length) % slides.length; updateSlide(); }
+    const carousel=document.querySelector('.carousel-wrapper');
+    const slides=document.querySelectorAll('.carousel-slide');
+    let index=0;
+    function updateSlide(){carousel.style.transform=`translateX(-${index*100}%)`;}
+    document.getElementById('next').addEventListener('click',()=>{index=(index+1)%slides.length;updateSlide();});
+    document.getElementById('prev').addEventListener('click',()=>{index=(index-1+slides.length)%slides.length;updateSlide();});
+    let startX=0;
+    const container=document.getElementById('carousel');
+    container.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;});
+    container.addEventListener('touchend',e=>{
+      const endX=e.changedTouches[0].clientX;
+      if(startX-endX>50){index=(index+1)%slides.length;updateSlide();}
+      if(endX-startX>50){index=(index-1+slides.length)%slides.length;updateSlide();}
     });
   </script>
 </body>
