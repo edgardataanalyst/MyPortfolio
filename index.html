@@ -4,449 +4,212 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>myPortfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Font Awesome (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --accent:#64ffda;
+      --accent-2:#00ccff;
+      --bg:#000000;
+      --bg-2:#0a192f;
+      --bg-3:#061423;
+      --text:#ffffff;
+      --muted:#a8b2d1;
     }
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
+    /* Reset */
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Segoe UI',system-ui,-apple-system,Arial,Helvetica,sans-serif;
       background: linear-gradient(to bottom right, #000000, #1a1a1a);
-      color: #ffffff;
-      scroll-behavior: smooth;
+      color: var(--text);
     }
 
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      padding: 20px;
-      text-align: center;
-      z-index: 1000;
+    /* Fixed header */
+    header{
+      position:fixed;top:0;left:0;right:0;
+      background:rgba(0,0,0,.9);
+      padding:16px 12px;
+      z-index:1000;
+      text-align:center;
+      backdrop-filter:saturate(120%) blur(6px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    nav a{
+      color:#fff;text-decoration:none;font-weight:600;
+      margin:0 14px;
+    }
+    nav a:hover{color:var(--accent-2)}
+
+    /* Sections */
+    section{padding:100px 20px 60px;min-height:100vh;scroll-margin-top:84px;}
+    .section{display:flex;flex-direction:column;align-items:center;text-align:center}
+
+    /* BG video */
+    .bg-video{
+      position:fixed;inset:0;min-width:100vw;min-height:100vh;
+      object-fit:cover;z-index:-1;opacity:.20;filter:brightness(.5) blur(1px);
+      pointer-events:none;
     }
 
-    nav a {
-      color: #ffffff;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
+    /* About */
+    .profile-pic{
+      max-width:100%;width:380px;margin-bottom:20px;
+      animation:zoomInFade 1.2s ease forwards;
+      filter:drop-shadow(0 0 9px var(--accent-2));
+    }
+    @keyframes zoomInFade{0%{opacity:0;transform:scale(.7)}100%{opacity:1;transform:scale(1)}}
+    .position-title{font-size:20px;color:var(--accent-2);margin:10px 0 20px}
+
+    /* Social icons (About) */
+    #about .social-icons a{
+      color:#fff;font-size:24px;margin:0 10px;transition:color .3s ease,transform .3s ease;
+    }
+    #about .social-icons a:hover{color:var(--accent-2);transform:translateY(-3px)}
+
+    /* Software icons */
+    .software-icons{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;margin-top:20px}
+    .software-icons i,.software-icons img{
+      font-size:40px;width:30px;height:30px;transition:transform .3s ease,filter .3s ease;cursor:pointer
+    }
+    .software-icons img.custom-icon{object-fit:contain;filter:drop-shadow(0 2px 3px rgba(0,0,0,.3))}
+    .software-icons i:hover,.software-icons img:hover{transform:scale(1.2);filter:brightness(1.2)}
+
+    /* Carousel */
+    .carousel-container{width:90%;max-width:800px;overflow:hidden;margin-top:40px;position:relative}
+    .carousel-wrapper{display:flex;transition:transform .5s ease-in-out}
+    .carousel-slide{min-width:100%;flex-shrink:0;text-align:center}
+    .carousel-slide img{
+      width:100%;max-height:400px;object-fit:contain;border-radius:10px;
+      box-shadow:0 0 12px rgba(0,204,255,.4)
+    }
+    .carousel-controls{
+      position:absolute;top:50%;left:0;right:0;display:flex;justify-content:space-between;
+      transform:translateY(-50%);pointer-events:none
+    }
+    .carousel-btn{
+      background:rgba(0,0,0,.6);color:var(--accent-2);border:none;font-size:24px;
+      padding:10px 16px;cursor:pointer;pointer-events:auto;border-radius:50%;
+      transition:background .3s ease
+    }
+    .carousel-btn:hover{background:rgba(0,0,0,.9)}
+    .project-title{margin-top:10px;font-size:18px;color:var(--accent-2);animation:fadeInUp .8s ease}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+    /* Projects */
+    .project-list{display:flex;flex-wrap:wrap;gap:30px;justify-content:center}
+    .project-card{
+      background:rgba(0,0,0,.4);backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,.1);box-shadow:0 8px 24px rgba(0,0,0,.4);
+      border-radius:15px;width:300px;padding:25px;text-align:left;
+      transition:transform .4s ease,box-shadow .4s ease,border-color .4s ease;animation:slideIn 1s ease forwards
+    }
+    .project-card h4{font-size:20px;margin-bottom:10px;color:#fff}
+    .project-card ul{padding-left:20px;list-style:disc;color:#ddd}
+    .project-card li{margin-bottom:8px}
+    .project-card:hover{transform:translateY(-10px);box-shadow:0 0 15px rgba(0,132,255,.6);border-color:#0084ff}
+    @keyframes slideIn{0%{opacity:0;transform:translateY(40px)}100%{opacity:1;transform:translateY(0)}}
+
+    /* ===== CONTACT (3 cols desktop, 1 col mobile) ===== */
+    #contact{
+      padding:80px 20px;background:var(--bg-2);text-align:center;color:#fff;
+    }
+    #contact .section-title{font-size:2.5rem;margin-bottom:16px;color:var(--accent)}
+    #contact .contact-subtitle{font-size:1.05rem;margin-bottom:32px;color:#ddd}
+
+    .contact-grid{
+      width:min(1100px,92%);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:24px;
+      align-items:start;
     }
 
-    nav a:hover {
-      color: #00ccff;
+    /* Column cards */
+    .card{
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:22px;
+      text-align:center;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
     }
 
-    section {
-      padding: 100px 20px 60px;
-      min-height: 100vh;
+    /* Contact details list */
+    .details{
+      display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;
     }
-
-    .section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+    .detail-item{
+      display:flex;align-items:center;gap:10px;justify-content:center;
+      color:#e6f1ff;font-size:1rem
     }
+    .detail-item i{color:var(--accent);font-size:1.2rem}
 
-    .profile-pic {
-      max-width: 100%;
-      width: 380px;
-      margin-bottom: 20px;
-      animation: zoomInFade 1.2s ease forwards;
-      filter: drop-shadow(0 0 9px #00ccff);
+    /* Contact form (centered inputs) */
+    .contact-form{
+      display:flex;flex-direction:column;gap:12px;align-items:center
     }
-
-    @keyframes zoomInFade {
-      0% { opacity: 0; transform: scale(0.7); }
-      100% { opacity: 1; transform: scale(1); }
+    .contact-form input,.contact-form textarea{
+      width:100%;max-width:520px;
+      padding:12px 14px;border:none;border-radius:10px;
+      background:#1b263b;color:#fff;outline:none;font-size:1rem
     }
-
-    .position-title {
-      font-size: 20px;
-      color: #00ccff;
-      margin: 10px 0 20px;
+    .contact-form input::placeholder,.contact-form textarea::placeholder{color:#9fb3c8}
+    .contact-form button{
+      padding:12px 20px;background:var(--accent);color:#0d1b2a;border:none;border-radius:10px;
+      font-weight:700;cursor:pointer;transition:.25s ease
     }
+    .contact-form button:hover{transform:translateY(-1px);filter:brightness(1.05)}
 
-    .social-icons a {
-      color: #ffffff;
-      font-size: 24px;
-      margin: 0 10px;
-      transition: color 0.3s ease;
+    /* Social links */
+    .socials{
+      display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:6px
     }
-
-    .social-icons a:hover {
-      color: #00ccff;
+    .socials a{
+      color:#fff;font-size:18px;display:inline-flex;align-items:center;justify-content:center;
+      width:40px;height:40px;border-radius:999px;
+      background:rgba(255,255,255,.1);transition:.25s ease
     }
+    .socials a:hover{background:var(--accent);color:#0d1b2a;transform:translateY(-3px)}
 
-    .download-resume {
-      margin-top: 20px;
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #00ccff;
-      color: #000;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 5px;
+    /* Footer (readable!) */
+    footer{
+      padding:20px;background:var(--bg-3);text-align:center;color:var(--muted);font-size:.95rem;
+      border-top:1px solid rgba(255,255,255,.08)
     }
+    footer a{color:var(--accent);text-decoration:none}
+    footer a:hover{text-decoration:underline}
 
-    .download-resume:hover {
-      background-color: #0099cc;
-      color: #fff;
+    /* ===== Responsive ===== */
+    @media (max-width: 992px){
+      .contact-grid{grid-template-columns:1fr;gap:18px}
     }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #000;
-      color: #fff;
+    @media (max-width: 768px){
+      .profile-pic{width:90%}
+      .carousel-slide img{max-height:260px}
+      .position-title{font-size:17px}
+      .project-title{font-size:16px}
     }
-
-    .bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      min-width: 100vw;
-      min-height: 100vh;
-      object-fit: cover;
-      z-index: -1;
-      opacity: 0.20;
-      filter: brightness(0.5) blur(1px);
-      pointer-events: none; /* ✨ this line makes it ignore clicks */
+    @media (max-width:480px){
+      .carousel-slide img{max-height:200px}
+      .project-title{font-size:15px}
+      .position-title{font-size:16px}
     }
-
-    /* === CAROUSEL STYLES === */
-    .carousel-container {
-      width: 90%;
-      max-width: 800px;
-      overflow: hidden;
-      margin-top: 40px;
-      position: relative;
-    }
-
-    .carousel-wrapper {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
-
-    .carousel-slide {
-      min-width: 100%;
-      flex-shrink: 0;
-      text-align: center;
-    }
-
-    .carousel-slide img {
-      width: 100%;
-      max-height: 400px;
-      object-fit: contain;
-      border-radius: 10px;
-      box-shadow: 0 0 12px rgba(0, 204, 255, 0.4);
-    }
-
-    .carousel-controls {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-
-    .carousel-btn {
-      background: rgba(0, 0, 0, 0.6);
-      color: #00ccff;
-      border: none;
-      font-size: 24px;
-      padding: 10px 16px;
-      cursor: pointer;
-      pointer-events: auto;
-      border-radius: 50%;
-      transition: background 0.3s ease;
-    }
-
-    .carousel-btn:hover {
-      background: rgba(0, 0, 0, 0.9);
-    }
-
-    .project-title {
-      margin-top: 10px;
-      font-size: 18px;
-      color: #00ccff;
-      animation: fadeInUp 0.8s ease;
-    }
-    
-   /* === Project Section === */
-    #projects {
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-      color: #ffffff;
-    }
-
-    .project-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-    }
-
-    .project-card {
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-      border-radius: 15px;
-      width: 300px;
-      padding: 25px;
-      text-align: left;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      animation: slideIn 1s ease forwards;
-      position: relative;
-    }
-
-    .project-card h4 {
-      font-size: 20px;
-      margin-bottom: 10px;
-      color: #ffffff;
-    }
-
-    .project-card ul {
-      padding-left: 20px;
-      list-style: disc;
-      color: #dddddd;
-    }
-
-    .project-card li {
-      margin-bottom: 8px;
-    }
-
-    .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 15px rgba(0, 132, 255, 0.6);
-      border-color: #0084ff;
-    }
-
-    @keyframes slideIn {
-      0% {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .project-list {
-        flex-direction: column;
-        align-items: center;
-      }
-
-/* Animation keyframes */
-@keyframes slideIn {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .project-list {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-  /* === software icons === */
-    .software-icons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 20px;
-    }
-    
-    .software-icons i,
-    .software-icons img {
-      font-size: 40px;
-      width: 30px;
-      height: 30px;
-      transition: transform 0.3s ease, filter 0.3s ease;
-      cursor: pointer;
-    }
-    
-    .software-icons img.custom-icon {
-      object-fit: contain;
-      filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
-    }
-    
-    .software-icons i:hover,
-    .software-icons img:hover {
-      transform: scale(1.2);
-      filter: brightness(1.2);
-    }
-      
-/* === Contact Section === */
-#contact {
-  padding: 80px 20px;
-  background: #0d1b2a;
-  text-align: center;
-  color: #fff;
-}
-
-#contact .section-title {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #64ffda;
-}
-
-/* Contact Info */
-.contact-info {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
-.contact-info p {
-  font-size: 1rem;
-  color: #ccc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-
-.contact-info i {
-  color: #64ffda;
-  font-size: 1.3rem;
-}
-
-/* Contact Form */
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 600px;
-  margin: 0 auto 30px;
-}
-
-.contact-form input,
-.contact-form textarea {
-  padding: 12px 15px;
-  border: none;
-  border-radius: 8px;
-  background: #1b263b;
-  color: #fff;
-  font-size: 1rem;
-}
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-  color: #aaa;
-}
-
-.contact-form button {
-  padding: 12px;
-  background: #64ffda;
-  border: none;
-  border-radius: 8px;
-  color: #0d1b2a;
-  font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.contact-form button:hover {
-  background: #52e0c4;
-}
-
-/* Social Media Icons */
-.social-icons {
-  margin-top: 20px;
-}
-
-.social-icons a {
-  color: #fff;
-  margin: 0 10px;
-  font-size: 1.5rem;
-  transition: 0.3s ease;
-}
-
-.social-icons a:hover {
-  color: #64ffda;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .contact-info {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-}
-
-/* Footer */
-footer {
-  padding: 20px;
-  background: #061423;
-  text-align: center;
-  color: #aaa;
-  font-size: 0.9rem;
-}
-
-/* === Animations === */
-@keyframes fadeDown {
-  0% { opacity: 0; transform: translateY(-20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-@keyframes slideInLeft {
-  0% { opacity: 0; transform: translateX(-50px); }
-  100% { opacity: 1; transform: translateX(0); }
-}
-@keyframes slideInRight {
-  0% { opacity: 0; transform: translateX(50px); }
-  100% { opacity: 1; transform: translateX(0); }
-}
-
-/* === Responsive === */
-@media (max-width: 768px) {
-  .contact-wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
-  .contact-info, .contact-form {
-    width: 100%;
-    max-width: 500px;
-  }
-  .social-icons {
-    justify-content: center;
-  }
-}
-</style>
+  </style>
 </head>
 
 <body>
+  <!-- Background video -->
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="bg.mp4" type="video/mp4">
+  </video>
+
+  <!-- Header -->
   <header>
-    <video autoplay muted loop playsinline class="bg-video">
-      <source src="bg.mp4" type="video/mp4">
-    </video>
     <nav>
       <a href="#about">About</a>
       <a href="#portfolio">Portfolio</a>
@@ -454,218 +217,205 @@ footer {
     </nav>
   </header>
 
+  <!-- About -->
   <section class="section" id="about">
     <img src="profile.png" alt="Profile Picture" class="profile-pic" />
     <h2>Edgardo Rivera Boragay Jr</h2>
-    <p class="position-title">
-      School IT Administrative | Website Developer | Data Analyst | ICT - Teacher
-    </p>
-    <!-- social media's icon -->
+    <p class="position-title">School IT Administrative | Website Developer | Data Analyst | ICT - Teacher</p>
+
     <div class="social-icons">
-      <a href="https://www.facebook.com/edgarboragay21/" target="_blank"><i class="fab fa-facebook fa-bounce"></i></a>
-      <a href="https://www.linkedin.com/in/edgardo-boragay-2ab51725a/" target="_blank"><i class="fab fa-linkedin fa-bounce"></i></a>
-      <a href="https://github.com/edgardataanalyst" target="_blank"><i class="fab fa-github fa-bounce"></i></a>
-      <a href="https://www.instagram.com/edgarboragay/" target="_blank"><i class="fab fa-instagram fa-bounce"></i></a>
+      <a href="https://www.facebook.com/edgarboragay21/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook fa-bounce"></i></a>
+      <a href="https://www.linkedin.com/in/edgardo-boragay-2ab51725a/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin fa-bounce"></i></a>
+      <a href="https://github.com/edgardataanalyst" target="_blank" aria-label="GitHub"><i class="fab fa-github fa-bounce"></i></a>
+      <a href="https://www.instagram.com/edgarboragay/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram fa-bounce"></i></a>
     </div>
+
     <div class="overlay" style="max-width: 800px; padding: 10px;">
       <p>
-        With over 6 years of experience as an IT Administrative Assistant at New Life Christian School of Cavite, I specialize in technical support and instruction in programming for Junior and Senior High School students.
+        With over 6 years of experience as an IT Administrative Assistant at New Life Christian School of Cavite,
+        I specialize in technical support and instruction in programming for Junior and Senior High School students.
       </p>
-     <div class="software-icons">
-       
-  <!-- Font Awesome Icons -->
-  <i class="fab fa-html5" style="color: #e44d26;" title="HTML5"></i>
-  <i class="fab fa-css3-alt" style="color: #264de4;" title="CSS3"></i>
-  <i class="fab fa-js-square" style="color: #f0db4f;" title="JavaScript"></i>
-  <i class="fab fa-php" style="color: #8892be;" title="PHP"></i>
-  <i class="fas fa-database" style="color: #f29111;" title="MySQL"></i>
-  <i class="fas fa-code" style="color: #007acc;" title="VS Code"></i>
-  <i class="fas fa-file-excel" style="color: #217346;" title="Microsoft Excel"></i>
-  <i class="fab fa-python" style="color: #3776AB;" title="Python"></i>
+      <div class="software-icons" aria-label="Skills">
+        <i class="fab fa-html5" style="color:#e44d26" title="HTML5"></i>
+        <i class="fab fa-css3-alt" style="color:#264de4" title="CSS3"></i>
+        <i class="fab fa-js-square" style="color:#f0db4f" title="JavaScript"></i>
+        <i class="fab fa-php" style="color:#8892be" title="PHP"></i>
+        <i class="fas fa-database" style="color:#f29111" title="MySQL"></i>
+        <i class="fas fa-code" style="color:#007acc" title="VS Code"></i>
+        <i class="fas fa-file-excel" style="color:#217346" title="Microsoft Excel"></i>
+        <i class="fab fa-python" style="color:#3776AB" title="Python"></i>
+      </div>
     </div>
   </section>
 
+  <!-- Portfolio -->
   <section class="section" id="portfolio">
     <h2>Portfolio</h2>
     <p>Showcase of projects goes here.</p>
+
     <div class="carousel-container" id="carousel">
       <div class="carousel-wrapper">
         <div class="carousel-slide">
-          <img src="arduino project.png" alt="Project 1">
+          <img src="arduino project.png" alt="Robotics Course">
           <p class="project-title">Robotics Course</p>
         </div>
         <div class="carousel-slide">
-          <img src="rfid.png" alt="Project 2">
+          <img src="rfid.png" alt="RFID Attendance System">
           <p class="project-title">RFID Attendance System</p>
         </div>
         <div class="carousel-slide">
-          <img src="powerbi.jpeg" alt="Project 3">
+          <img src="powerbi.jpeg" alt="Power BI">
           <p class="project-title">Power BI</p>
         </div>
         <div class="carousel-slide">
-          <img src="dashboard.png" alt="Project 4">
+          <img src="dashboard.png" alt="Excel">
           <p class="project-title">Excel</p>
         </div>
         <div class="carousel-slide">
-          <img src="powerbi.jpeg" alt="Project 5">
+          <img src="powerbi.jpeg" alt="Java">
           <p class="project-title">Java Course</p>
         </div>
         <div class="carousel-slide">
-          <img src="Scratch.png" alt="Project 5">
+          <img src="Scratch.png" alt="Scratch">
           <p class="project-title">Code Blocks Course</p>
         </div>
-         <div class="carousel-slide">
-          <img src="website.jpg" alt="Project 5">
+        <div class="carousel-slide">
+          <img src="website.jpg" alt="Website Development">
           <p class="project-title">Website Development</p>
         </div>
       </div>
       <div class="carousel-controls">
-        <button class="carousel-btn" id="prev">&#10094;</button>
-        <button class="carousel-btn" id="next">&#10095;</button>
+        <button class="carousel-btn" id="prev" aria-label="Previous slide">&#10094;</button>
+        <button class="carousel-btn" id="next" aria-label="Next slide">&#10095;</button>
       </div>
     </div>
 
-  <!-- 📘 ADDED PROJECT LIST -->
-  <div class="project-list">
-    <div class="project-card">
-      <h4>School RFID Attendance System</h4>
-      <ul>
-      <li>Developed a custom RFID tap-in/tap-out system</li>
-      <li>Integrated with Excel and MySQL database</li>
-      <li>Used QR codes for backup attendance logging</li>
-      <li>Real-time dashboard and SMS alerts to parents</li>
-    </ul>
+    <div class="project-list" style="margin-top:28px">
+      <div class="project-card">
+        <h4>School RFID Attendance System</h4>
+        <ul>
+          <li>Custom RFID tap-in/tap-out system</li>
+          <li>Integrated with Excel and MySQL</li>
+          <li>QR code backup attendance</li>
+          <li>Real-time dashboard + SMS alerts</li>
+        </ul>
+      </div>
+      <div class="project-card">
+        <h4>Student Portal Web System</h4>
+        <ul>
+          <li>Responsive portal (HTML/CSS/PHP)</li>
+          <li>Login + student data management</li>
+          <li>MySQL for secure data handling</li>
+        </ul>
+      </div>
+      <div class="project-card">
+        <h4>Power BI Dashboards</h4>
+        <ul>
+          <li>Interactive school performance reports</li>
+          <li>Custom visuals for admin/academics</li>
+          <li>Published to Power BI Service</li>
+        </ul>
+      </div>
+      <div class="project-card">
+        <h4>HTML &amp; CSS</h4>
+        <ul>
+          <li>Responsive + accessible pages</li>
+          <li>Mobile-first & cross-browser</li>
+          <li>Reusable components/layouts</li>
+        </ul>
+      </div>
+      <div class="project-card">
+        <h4>Robotics (Arduino)</h4>
+        <ul>
+          <li>Sensor & automation projects</li>
+          <li>C/C++ programming for Arduino</li>
+          <li>GSM/RFID/LCD integrations</li>
+        </ul>
+      </div>
+      <div class="project-card">
+        <h4>Scratch</h4>
+        <ul>
+          <li>Games & animations for JHS</li>
+          <li>Fundamental coding concepts</li>
+          <li>Storytelling + logic activities</li>
+        </ul>
+      </div>
+      <div class="project-card">
+        <h4>Java</h4>
+        <ul>
+          <li>Basic console applications</li>
+          <li>OOP concepts, control structures</li>
+          <li>Real-world practice tasks</li>
+        </ul>
+      </div>
     </div>
-    <div class="project-card">
-      <h4>Student Portal Web System</h4>
-    <ul>
-      <li>Designed a responsive web portal using HTML, CSS, and PHP</li>
-      <li>Includes login, student data management, and search features</li>
-      <li>Connected to MySQL for secure data handling</li>
-    </ul>
-    </div>
-    <div class="project-card">
-      <h4>Power BI Dashboards</h4>
-      <ul>
-      <li>Designed and developed interactive dashboards and reports for school performance and attendance tracking</li>
-      <li>Customized visualizations for administrative and academic reporting</li>
-      <li>Shared reports securely via Power BI Service for decision-making</li>
-    </ul>
-    </div>
-    <div class="project-card">
-      <h4>HTML & CSS</h4>
-      <ul>
-      <li>Built responsive and accessible web pages for school portals and student profiles</li>
-      <li>Ensured mobile optimization and cross-browser compatibility</li>
-      <li>Created reusable components and layouts for consistent design</li>
-    </ul>
-    </div>
-    <div class="project-card">
-      <h4>Robotics (Arduino Project)</h4>
-      <ul>
-      <li>Developed hands-on microcontroller projects for student learning (e.g., RFID attendance, sensors, and automation)</li>
-      <li>Programmed Arduino boards using C/C++ for real-time data collection and control</li>
-      <li>Integrated modules such as GSM, RFID, and LCD with Arduino for school-use innovations</li>
-    </ul>
-    </div>
-     <div class="project-card">
-      <h4>Scratch</h4>
-      <ul>
-      <li>Taught fundamental programming concepts using Scratch to junior high school students</li>
-      <li>Designed interactive games and animations to enhance student creativity and logic</li>
-      <li>Integrated storytelling with coding to build engaging educational projects</li>
-    </ul>
-    </div>
-     <div class="project-card">
-      <h4>JAVA</h4>
-      <ul>
-      <li>Created basic console applications to demonstrate object-oriented programming (OOP) concepts</li>
-      <li>Taught Java syntax, control structures, and data types in a beginner-friendly approach</li>
-      <li>Provided real-world Java coding scenarios aligned with academic requirements</li>
-    </ul>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== Contact Section ===== -->
-<section id="contact">
-  <div class="container">
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
     <h2 class="section-title">Contact Me</h2>
+    <p class="contact-subtitle">Feel free to reach out for collaborations or just a friendly hello 👋</p>
 
-    <!-- Contact Info -->
-    <div class="contact-info">
-      <p><i class="fas fa-envelope"></i> edgardoboragay21@gmail.com</p>
-      <p><i class="fas fa-phone"></i> +63 9957536714</p>
-      <p><i class="fas fa-map-marker-alt"></i> Silang, Cavite, Philippines</p>
+    <div class="contact-grid">
+      <!-- Column 1: Details -->
+      <div class="card">
+        <div class="details">
+          <div class="detail-item"><i class="fas fa-envelope"></i> edgardoboragay21@gmail.com</div>
+          <div class="detail-item"><i class="fas fa-phone"></i> +63 9957536714</div>
+          <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Silang, Cavite, Philippines</div>
+        </div>
+      </div>
+
+      <!-- Column 2: Form -->
+      <div class="card">
+        <form class="contact-form" action="https://formspree.io/f/yourformid" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Column 3: Socials -->
+      <div class="card">
+        <p style="margin-bottom:10px;color:#e6f1ff;font-weight:600">Connect with me</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/edgarboragay21/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/edgarboragay/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/edgardo-boragay-2ab51725a/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/edgardataanalyst" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Contact Form -->
-    <form class="contact-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+  <!-- Footer (readable text color) -->
+  <footer>
+    <p>© <span id="yr"></span> Edgardo Rivera Boragay Jr. My Portfolio.</p>
+  </footer>
 
-    <!-- Social Media -->
-    <div class="social-icons">
-      <a href="https://www.facebook.com/edgarboragay21/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/edgarboragay/" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.linkedin.com/in/edgardo-boragay-2ab51725a/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://github.com/edgardataanalyst" target="_blank"><i class="fab fa-github"></i></a>
-    </div>
-  </div>
-</section>
-
-<!-- === FOOTER === -->
-<footer>
-  <p>© Edgardo Rivera Boragay Jr. My Portfolio.</p>
-</footer>
-
-<!-- FontAwesome -->
-<script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
-
+  <!-- Carousel JS + small helpers -->
   <script>
+    // year in footer
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Carousel
     const carousel = document.querySelector('.carousel-wrapper');
     const slides = document.querySelectorAll('.carousel-slide');
     let index = 0;
+    function updateSlide(){ carousel.style.transform = `translateX(-${index * 100}%)`; }
+    document.getElementById('next').addEventListener('click', () => { index = (index + 1) % slides.length; updateSlide(); });
+    document.getElementById('prev').addEventListener('click', () => { index = (index - 1 + slides.length) % slides.length; updateSlide(); });
 
-    function updateSlide() {
-      carousel.style.transform = `translateX(-${index * 100}%)`;
-    }
-
-    document.getElementById('next').addEventListener('click', () => {
-      index = (index + 1) % slides.length;
-      updateSlide();
-    });
-
-    document.getElementById('prev').addEventListener('click', () => {
-      index = (index - 1 + slides.length) % slides.length;
-      updateSlide();
-    });
-
-    // Touch swipe support
+    // Touch swipe
     let startX = 0;
     const container = document.getElementById('carousel');
-
-    container.addEventListener('touchstart', e => {
-      startX = e.touches[0].clientX;
-    });
-
+    container.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
     container.addEventListener('touchend', e => {
       const endX = e.changedTouches[0].clientX;
-      if (startX - endX > 50) {
-        index = (index + 1) % slides.length;
-        updateSlide();
-      }
-      if (endX - startX > 50) {
-        index = (index - 1 + slides.length) % slides.length;
-        updateSlide();
-      }
+      if (startX - endX > 50) { index = (index + 1) % slides.length; updateSlide(); }
+      if (endX - startX > 50) { index = (index - 1 + slides.length) % slides.length; updateSlide(); }
     });
   </script>
 </body>
 </html>
-
-
-
