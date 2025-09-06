@@ -235,6 +235,30 @@
     font-size: 30px;
   }
 }
+    
+    /* Portrait Certificates Fix */
+.cert-card img {
+  width: 100%;
+  height: auto;       /* maintain aspect ratio */
+  object-fit: contain; /* prevent cropping inside card */
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90%;    /* fit tall images */
+  width: auto;
+  height: auto;
+  object-fit: contain; /* ensure full image visible */
+  border-radius: 10px;
+  animation: zoom 0.3s ease;
+}
+
+/* Mobile adjustments for lightbox */
+@media (max-width: 768px) {
+  .lightbox-content {
+    max-height: 80vh; /* fit mobile viewport */
+  }
+}
 
   </style>
 </head>
@@ -387,6 +411,7 @@
 </script>
 </body>
 </html>
+
 
 
 
