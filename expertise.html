@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Educational Background & Expertise</title>
+  <title>Education & Expertise</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -135,19 +135,120 @@
     .go-back a:hover {
       background: rgba(0,0,0,0.9);
     }
+
+    .cert-card {
+  background: rgba(255,255,255,0.1);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.cert-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+}
+
+.cert-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Responsive Grid */
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 80px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.95);
+  text-align: center;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+  animation: zoom 0.3s ease;
+}
+
+@keyframes zoom {
+  from {transform: scale(0.7);}
+  to {transform: scale(1);}
+}
+
+.close, .prev, .next {
+  position: absolute;
+  top: 50%;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
+  transform: translateY(-50%);
+}
+
+.close {
+  top: 30px;
+  right: 25px;
+  font-size: 45px;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+.close:hover, .prev:hover, .next:hover {
+  color: #87CEEB;
+}
+
+#caption {
+  margin-top: 15px;
+  color: #ccc;
+  font-size: 18px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .skills-list {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+  }
+  .close, .prev, .next {
+    font-size: 30px;
+  }
+}
+
   </style>
 </head>
 <body>
 
   <!-- Background Video -->
   <video autoplay muted loop class="bg-video">
-    <source src="bg.mp4" type="video/mp4">
+    <source src="background.mp4" type="video/mp4">
     Your browser does not support HTML5 video.
   </video>
   <div class="overlay"></div>
 
   <header>
-    <h1>Educational Background & Expertise</h1>
+    <h1>Education & Expertise</h1>
   </header>
 
   <div class="timeline">
@@ -211,13 +312,78 @@
         </ul>
       </div>
     </div>
+
+    <!-- Certificates Section -->
+<div class="skills-section">
+  <h2>Certificates</h2>
+  <div class="skills-list">
+    <div class="cert-card">
+      <img src="cert1.jpg" alt="NC II CSS Certificate" onclick="openLightbox(0)">
+      <h3>Computer Systems Servicing NC II</h3>
+      <p>TESDA – 2024</p>
+    </div>
+    <div class="cert-card">
+      <img src="cert2.jpg" alt="Web Development Certificate" onclick="openLightbox(1)">
+      <h3>Web Development Fundamentals</h3>
+      <p>Refocus E-Learning Philippine Corp – 2023</p>
+    </div>
+    <div class="cert-card">
+      <img src="cert3.jpg" alt="Power BI Certificate" onclick="openLightbox(2)">
+      <h3>Data Analytics with Power BI</h3>
+      <p>Online Bootcamp – 2023</p>
+    </div>
+    <div class="cert-card">
+      <img src="cert4.jpg" alt="Photoshop Certificate" onclick="openLightbox(3)">
+      <h3>Graphic Design with Photoshop</h3>
+      <p>Adobe Training – 2022</p>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox">
+  <span class="close" onclick="closeLightbox()">&times;</span>
+  <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
+  <img class="lightbox-content" id="lightbox-img">
+  <span class="next" onclick="changeSlide(1)">&#10095;</span>
+  <div id="caption"></div>
+</div>
+
   </div>
 
   <div class="go-back">
     <a href="index.html">← Go Back</a>
   </div>
 
+  <script>
+  const images = [
+    {src: "cert1.jpg", caption: "NC II CSS Certificate"},
+    {src: "cert2.jpg", caption: "Web Development Fundamentals"},
+    {src: "cert3.jpg", caption: "Power BI Certificate"},
+    {src: "cert4.jpg", caption: "Graphic Design with Photoshop"}
+  ];
+
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    document.getElementById("lightbox").style.display = "block";
+    showSlide(currentIndex);
+  }
+
+  function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+  }
+
+  function changeSlide(step) {
+    currentIndex = (currentIndex + step + images.length) % images.length;
+    showSlide(currentIndex);
+  }
+
+  function showSlide(index) {
+    document.getElementById("lightbox-img").src = images[index].src;
+    document.getElementById("caption").innerHTML = images[index].caption;
+  }
+</script>
 </body>
 </html>
-
-
