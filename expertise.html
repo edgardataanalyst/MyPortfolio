@@ -1,462 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Education & Expertise</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      color: white;
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow-x: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Education & Expertise</title>
 
-    /* Background video */
-    .bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-      filter: brightness(0.5);
-    }
+<style>
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    /* Overlay */
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to right, #0f2027aa, #203a43aa, #2c5364aa); 
-      z-index: -1;
-    }
+/* BODY */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  overflow-x: hidden;
+}
 
-    header {
-      background: rgba(0, 0, 0, 0.6);
-      text-align: center;
-      padding: 30px 20px;
-    }
+/* BACKGROUND */
+.bg-video {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  filter: brightness(0.4);
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      color: #FFD700;
-    }
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0f2027cc, #203a43cc, #2c5364cc);
+  z-index: -1;
+}
 
-    .timeline {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
-    }
-
-    .job {
-      margin-bottom: 30px;
-      padding: 20px;
-      border-left: 5px solid #FFD700;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 10px;
-    }
-
-    .job h3 {
-      margin: 0;
-      font-size: 1.3rem;
-      color: #87CEEB;
-    }
-
-    .job h4 {
-      margin: 5px 0;
-      font-size: 1rem;
-      color: #FFD700;
-    }
-
-    .date {
-      font-style: italic;
-      color: #ccc;
-      margin-bottom: 10px;
-    }
-
-    .skills-section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 10px;
-    }
-
-    .skills-section h2 {
-      text-align: center;
-      color: #FFD700;
-      margin-bottom: 20px;
-    }
-
-    .skills-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-    }
-
-    .skills-list div {
-      background: rgba(255,255,255,0.1);
-      padding: 15px;
-      border-radius: 8px;
-    }
-
-    .skills-list h3 {
-      margin-top: 0;
-      color: #87CEEB;
-    }
-
-    .skills-list ul {
-      margin: 0;
-      padding-left: 20px;
-    }
-
-    .go-back {
-      text-align: center;
-      margin: 40px 0;
-    }
-
-    .go-back a {
-      background: rgba(0,0,0,0.7);
-      color: white;
-      padding: 12px 25px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-
-    .go-back a:hover {
-      background: rgba(0,0,0,0.9);
-    }
-
-    .cert-card {
-  background: rgba(255,255,255,0.1);
-  padding: 15px;
-  border-radius: 10px;
+/* HEADER */
+header {
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 50px 20px;
+}
+
+header h1 {
+  font-size: 2.8rem;
+  color: #FFD700;
+}
+
+/* SECTION */
+.section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 30px 20px;
+}
+
+/* CARD STYLE */
+.card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 20px;
+}
+
+/* TIMELINE */
+.job {
+  border-left: 4px solid #FFD700;
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+
+.job h3 {
+  color: #87CEEB;
+}
+
+.job h4 {
+  color: #FFD700;
+}
+
+.date {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+}
+
+/* CERT CARDS */
+.cert-card {
+  background: rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  transition: 0.3s;
   cursor: pointer;
 }
 
 .cert-card img {
   width: 100%;
-  height: auto;
   border-radius: 8px;
-  margin-bottom: 10px;
-  transition: transform 0.3s ease;
+  transition: 0.3s;
 }
 
 .cert-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
 }
 
 .cert-card:hover img {
   transform: scale(1.05);
 }
 
-/* Responsive Grid */
-.skills-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
+/* CATEGORY TITLE */
+.category {
+  margin: 30px 0 10px;
+  font-size: 1.2rem;
+  color: #FFD700;
 }
 
-/* Lightbox */
+/* LIGHTBOX */
 .lightbox {
   display: none;
   position: fixed;
   z-index: 9999;
-  padding-top: 80px;
-  left: 0;
-  top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.95);
+  background: rgba(0,0,0,0.95);
   text-align: center;
 }
 
-.lightbox-content {
+.lightbox img {
   max-width: 90%;
-  max-height: 80%;
+  max-height: 85%;
+  margin-top: 60px;
   border-radius: 10px;
-  animation: zoom 0.3s ease;
-}
-
-@keyframes zoom {
-  from {transform: scale(0.7);}
-  to {transform: scale(1);}
-}
-
-.close, .prev, .next {
-  position: absolute;
-  top: 50%;
-  color: white;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  user-select: none;
-  padding: 10px;
-  transform: translateY(-50%);
 }
 
 .close {
-  top: 30px;
-  right: 25px;
-  font-size: 45px;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  cursor: pointer;
 }
 
-.prev { left: 20px; }
-.next { right: 20px; }
-
-.close:hover, .prev:hover, .next:hover {
-  color: #87CEEB;
+/* BUTTON */
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 25px;
+  background: rgba(0,0,0,0.7);
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
 }
 
-#caption {
-  margin-top: 15px;
-  color: #ccc;
-  font-size: 18px;
+/* MOBILE */
+@media(max-width:768px){
+  header h1 {font-size: 2rem;}
 }
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-  .skills-list {
-    grid-template-columns: 1fr; /* 1 column on mobile */
-  }
-  .close, .prev, .next {
-    font-size: 30px;
-  }
-}
-    
-    /* Portrait Certificates Fix */
-.cert-card img {
-  width: 100%;
-  height: auto;       /* maintain aspect ratio */
-  object-fit: contain; /* prevent cropping inside card */
-}
-
-.lightbox-content {
-  max-width: 90%;
-  max-height: 90%;    /* fit tall images */
-  width: auto;
-  height: auto;
-  object-fit: contain; /* ensure full image visible */
-  border-radius: 10px;
-  animation: zoom 0.3s ease;
-}
-
-/* Mobile adjustments for lightbox */
-@media (max-width: 768px) {
-  .lightbox-content {
-    max-height: 80vh; /* fit mobile viewport */
-  }
-}
-
-  </style>
+</style>
 </head>
+
 <body>
 
-  <!-- Background Video -->
-  <video autoplay muted loop class="bg-video">
-    <source src="bg.mp4" type="video/mp4">
-    Your browser does not support HTML5 video.
-  </video>
-  <div class="overlay"></div>
+<video autoplay muted loop class="bg-video">
+  <source src="bg.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
 
-  <header>
-    <h1>Education & Expertise</h1>
-  </header>
+<header>
+  <h1>Education & Expertise</h1>
+</header>
 
-  <div class="timeline">
-    <div class="job">
-      <div class="date">December 2022 – December 2024</div>
-      <h3>Data Analyst | Web Developer</h3>
-      <h4>Refocus E-Learning Philippine Corp</h4>
-      <p>F27 The Enterprise Centre, Tower 2, Ayala Ave. cor. Paseo De Roxas, Makati</p>
+<div class="section">
+
+<!-- EXPERIENCE -->
+<div class="card">
+  <h2>Experience</h2>
+
+  <div class="job">
+    <div class="date">2022 – 2024</div>
+    <h3>Data Analyst | Web Developer</h3>
+    <h4>Refocus E-Learning</h4>
+  </div>
+
+  <div class="job">
+    <div class="date">2021 – 2022</div>
+    <h3>AutoCAD Operator</h3>
+    <h4>Top-Class Coaching</h4>
+  </div>
+
+</div>
+
+<!-- CERTIFICATES -->
+<div class="card">
+  <h2>Certificates</h2>
+
+  <!-- AI -->
+  <div class="category">🧠 AI Certifications</div>
+  <div class="grid">
+    <div class="cert-card" onclick="openLightbox(6)">
+      <img src="Faculty_certifified_1.png">
+      <p>Gemini Faculty</p>
     </div>
 
-    <div class="job">
-      <div class="date">December 2021 – November 2022</div>
-      <h3>AutoCAD Operator</h3>
-      <h4>Top-Class Coaching Services and Tutorial Center</h4>
-      <p>Dasmariñas, Cavite</p>
+    <div class="cert-card" onclick="openLightbox(7)">
+      <img src="Gemini_educator_1.png">
+      <p>Gemini Educator</p>
     </div>
 
-    <div class="job">
-      <div class="date">2004 – 2006</div>
-      <h3>Bachelor of Science in Criminology</h3>
-      <h4>City College of Manila</h4>
-      <p>Escolta, Sta. Cruz, Manila</p>
+    <div class="cert-card" onclick="openLightbox(8)">
+      <img src="google_certified_educator.jpg">
+      <p>Google Educator</p>
+    </div>
+
+    <div class="cert-card" onclick="openLightbox(0)">
+      <img src="azure.PNG">
+      <p>Azure AI</p>
     </div>
   </div>
 
-  <div class="skills-section">
-    <h2>Core Skills</h2>
-    <div class="skills-list">
-      <div>
-        <h3>Professional</h3>
-        <ul>
-          <li>Data-driven</li>
-          <li>Adaptable & Flexible</li>
-          <li>Multi-tasking</li>
-          <li>Time Management</li>
-          <li>Problem-solving</li>
-          <li>Collaboration</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Hospitality & Service</h3>
-        <ul>
-          <li>Housekeeping Operations</li>
-          <li>Customer Service</li>
-          <li>Food Preparation</li>
-          <li>Kitchen Support</li>
-          <li>Resourceful</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Technical</h3>
-        <ul>
-          <li>Excel & Google Sheets (Advanced)</li>
-          <li>Canva</li>
-          <li>Power BI (Basic)</li>
-          <li>AutoCAD & Sketch-Up Pro (Basic)</li>
-          <li>Adobe Photoshop (Basic)</li>
-          <li>HTML & CSS (Basic)</li>
-          <li>Java (Basic)</li>
-          <li>SQL (Basic)</li>
-        </ul>
-      </div>
+  <!-- WEB -->
+  <div class="category">💻 Web & Data</div>
+  <div class="grid">
+    <div class="cert-card" onclick="openLightbox(3)">
+      <img src="data_analytics (1).png">
+      <p>Web Development</p>
     </div>
 
-    <!-- Certificates Section -->
-<div class="skills-section">
-  <h2>Certificates</h2>
-  <div class="skills-list">
-
-    <div class="cert-card">
-      <img src="azure.PNG" alt="Microsoft AI Course" onclick="openLightbox(0)">
-      <h3>Certificate of Completion</h3>
-      <p>Microsoft Artificial Intelligence Course (Azure AI Fundamentals)</p>
+    <div class="cert-card" onclick="openLightbox(4)">
+      <img src="data_analytics.png">
+      <p>Data Analytics</p>
     </div>
 
-    <div class="cert-card">
-      <img src="css_cert.PNG" alt="CSS Certificate" onclick="openLightbox(1)">
-      <h3>Certificate of Completion</h3>
-      <p>Introduction to CSS</p>
+    <div class="cert-card" onclick="openLightbox(1)">
+      <img src="css_cert.PNG">
+      <p>CSS</p>
     </div>
+  </div>
 
-    <div class="cert-card">
-      <img src="neti.PNG" alt="Wi-Fi Certificate" onclick="openLightbox(2)">
-      <h3>Certificate of Completion</h3>
-      <p>Wi-Fi and Digital Thumbprint Program</p>
-    </div>
-
-    <div class="cert-card">
-      <img src="data_analytics (1).png" alt="Web Dev Certificate" onclick="openLightbox(3)">
-      <h3>Certificate of Graduation</h3>
-      <p>Web Development Course</p>
-    </div>
-
-    <div class="cert-card">
-      <img src="data_analytics.png" alt="Data Analytics Certificate" onclick="openLightbox(4)">
-      <h3>Certificate of Graduation</h3>
-      <p>Core and Advanced Data Analytics</p>
-    </div>
-
-    <div class="cert-card">
-      <img src="autocad.jfif" alt="AutoCAD Certificate" onclick="openLightbox(5)">
-      <h3>Certificate of Completion</h3>
+  <!-- TECH -->
+  <div class="category">🛠 Technical</div>
+  <div class="grid">
+    <div class="cert-card" onclick="openLightbox(5)">
+      <img src="autocad.jfif">
       <p>AutoCAD</p>
     </div>
 
-    <div class="cert-card">
-      <img src="Faculty_certifified_1.png" alt="Gemini Faculty" onclick="openLightbox(6)">
-      <h3>Certificate of Completion</h3>
-      <p>Google for Education</p>
+    <div class="cert-card" onclick="openLightbox(2)">
+      <img src="neti.PNG">
+      <p>Wi-Fi Program</p>
     </div>
-
-    <div class="cert-card">
-      <img src="Gemini_educator_1.png" alt="Gemini Educator" onclick="openLightbox(7)">
-      <h3>Google for Education</h3>
-      <p>Gemini Certified Educator</p>
-    </div>
-
-    <div class="cert-card">
-      <img src="google_certified_educator.jpg" alt="Google Certified Educator" onclick="openLightbox(8)">
-      <h3>Certificate of Completion</h3>
-      <p>Google Certified Educator Level 1</p>
   </div>
 
-  </div>
 </div>
 
-<!-- Lightbox Modal -->
-<div id="lightbox" class="lightbox">
-  <span class="close" onclick="closeLightbox()">&times;</span>
-  <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
-  <img class="lightbox-content" id="lightbox-img">
-  <span class="next" onclick="changeSlide(1)">&#10095;</span>
-  <div id="caption"></div>
+<!-- BACK -->
+<div style="text-align:center;">
+  <a href="index.html" class="btn">← Back</a>
 </div>
 
-  </div>
+</div>
 
-  <div class="go-back">
-    <a href="index.html">← Go Back</a>
-  </div>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="close">&times;</span>
+  <img id="lightbox-img">
+</div>
 
-  <script>
-  const images = [
-    {src: "azure.PNG", caption: "Microsoft AI Course"},
-    {src: "css_cert.PNG", caption: "Computer Systems Servicing"},
-    {src: "neti.PNG", caption: "Wi-Fi 101 and Digital Thumbprint Program"},
-    {src: "data_analytics (1).png", caption: "Web Development Certificate"},
-    {src: "data_analytics.png", caption: "Data Analytics"},
-    {src: "autocad.jfif", caption: "AutoCAD"}
-  ];
+<script>
+const images = [
+  "azure.PNG",
+  "css_cert.PNG",
+  "neti.PNG",
+  "data_analytics (1).png",
+  "data_analytics.png",
+  "autocad.jfif",
+  "Faculty_certifified_1.png",
+  "Gemini_educator_1.png",
+  "google_certified_educator.jpg"
+];
 
-  let currentIndex = 0;
+function openLightbox(index){
+  document.getElementById("lightbox").style.display="block";
+  document.getElementById("lightbox-img").src=images[index];
+}
 
-  function openLightbox(index) {
-    currentIndex = index;
-    document.getElementById("lightbox").style.display = "block";
-    showSlide(currentIndex);
-  }
-
-  function closeLightbox() {
-    document.getElementById("lightbox").style.display = "none";
-  }
-
-  function changeSlide(step) {
-    currentIndex = (currentIndex + step + images.length) % images.length;
-    showSlide(currentIndex);
-  }
-
-  function showSlide(index) {
-    document.getElementById("lightbox-img").src = images[index].src;
-    document.getElementById("caption").innerHTML = images[index].caption;
-  }
+function closeLightbox(){
+  document.getElementById("lightbox").style.display="none";
+}
 </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
