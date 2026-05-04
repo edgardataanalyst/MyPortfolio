@@ -1,178 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Work Experience</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      color: white;
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow-x: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work Experience</title>
 
-    /* Background video */
-    .bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-      filter: brightness(0.5);
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    /* Optional overlay para may gradient pa rin */
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to right, #0f2027aa, #203a43aa, #2c5364aa); 
-      z-index: -1;
-    }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  overflow-x: hidden;
+}
 
-    header {
-      background: rgba(0, 0, 0, 0.6);
-      text-align: center;
-      padding: 30px 20px;
-    }
+/* BACKGROUND */
+.bg-video {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  filter: brightness(0.4);
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      color: #FFD700;
-    }
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0f2027cc, #203a43cc, #2c5364cc);
+  z-index: -1;
+}
 
-    .timeline {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
-    }
+/* HEADER */
+header {
+  text-align: center;
+  padding: 50px 20px 20px;
+}
 
-    .job {
-      margin-bottom: 30px;
-      padding: 20px;
-      border-left: 5px solid #FFD700;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 10px;
-    }
+header h1 {
+  font-size: 2.8rem;
+  color: #FFD700;
+}
 
-    .job h3 {
-      margin: 0;
-      font-size: 1.3rem;
-      color: #87CEEB;
-    }
+/* TIMELINE */
+.timeline {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
 
-    .job h4 {
-      margin: 5px 0;
-      font-size: 1rem;
-      color: #FFD700;
-    }
+/* JOB CARD */
+.job {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+  border-left: 5px solid #FFD700;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 25px;
+  transition: 0.3s;
+}
 
-    .job ul {
-      margin: 5px 0 0 20px;
-      padding: 0;
-    }
+.job:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
 
-    .job li {
-      line-height: 1.6;
-    }
+/* TEXT */
+.date {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
 
-    .date {
-      font-style: italic;
-      color: #ccc;
-      margin-bottom: 10px;
-    }
+.job h3 {
+  color: #00ccff;
+  font-size: 1.4rem;
+}
 
-    .go-back {
-      text-align: center;
-      margin: 40px 0;
-    }
+.job h4 {
+  color: #FFD700;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
 
-    .go-back a {
-      background: rgba(0,0,0,0.7);
-      color: white;
-      padding: 12px 25px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
+.job ul {
+  padding-left: 20px;
+}
 
-    .go-back a:hover {
-      background: rgba(0,0,0,0.9);
-    }
-  </style>
+.job li {
+  line-height: 1.7;
+  margin-bottom: 5px;
+  color: #ddd;
+}
+
+/* BACK BUTTON */
+.go-back {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.go-back a {
+  background: linear-gradient(45deg,#0084ff,#00ccff);
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+.go-back a:hover {
+  transform: scale(1.05);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+}
+</style>
 </head>
+
 <body>
-  <!-- Background Video -->
-  <video autoplay muted loop playsinline class="bg-video">
-    <source src="bg.mp4" type="video/mp4">
-    Your browser does not support HTML5 video.
-  </video>
 
-  <!-- Overlay gradient -->
-  <div class="overlay"></div>
+<!-- BACKGROUND -->
+<video autoplay muted loop playsinline class="bg-video">
+  <source src="bg.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
 
-  <header>
-    <h1>Work Experience</h1>
-  </header>
+<header>
+  <h1>Work Experience</h1>
+</header>
 
-  <section class="timeline">
-    <div class="job">
-      <div class="date">January 2019 – Present</div>
-      <h3>IT & Administrative Specialist</h3>
-      <h4>New Life Christian School of Cavite, Inc.</h4>
-      <ul>
-        <li>Provided IT support, including software/hardware maintenance and data management.</li>
-        <li>Developed online systems: grading sheets, admission forms, and automated workflows.</li>
-        <li>Designed marketing materials (posters, videos) and managed social media presence.</li>
-        <li>Conducted ICT tutorial classes for students to enhance technical skills.</li>
-      </ul>
-    </div>
+<section class="timeline">
 
-    <div class="job">
-      <div class="date">June 2023 – December 2023</div>
-      <h3>Website Developer & Data Entry Specialist</h3>
-      <h4>Ofel Logistics Services (NAI, Parañaque City)</h4>
-      <ul>
-        <li>Designed and managed a web-based shipping monitoring system.</li>
-        <li>Optimized data entry processes and automated invoicing solutions.</li>
-        <li>Created dashboards and visual reports for better decision-making.</li>
-      </ul>
-    </div>
-
-    <div class="job">
-      <div class="date">January 2016 – October 2018</div>
-      <h3>Sales Executive & Loan Specialist</h3>
-      <h4>China Trust Bank Philippine Corp. (CTBC Bank)</h4>
-      <ul>
-        <li>Managed client portfolios and handled loan applications.</li>
-        <li>Maintained strong customer relationships to drive sales growth.</li>
-        <li>Provided tailored financial advice and solutions for clients.</li>
-      </ul>
-    </div>
-
-    <div class="job">
-      <div class="date">April 2010 – October 2014</div>
-      <h3>Housekeeping Supervisor & Leadman</h3>
-      <h4>Dream Hotel (Eurotel Corporation)</h4>
-      <ul>
-        <li>Supervised housekeeping operations ensuring guest satisfaction.</li>
-        <li>Trained staff, monitored performance, and implemented quality control.</li>
-        <li>Coordinated with other departments for smooth hotel operations.</li>
-      </ul>
-    </div>
-  </section>
-
-  <div class="go-back">
-    <a href="index.html">⬅ Go Back</a>
+  <div class="job">
+    <div class="date">January 2019 – Present</div>
+    <h3>IT & Administrative Specialist | ICT Instructor</h3>
+    <h4>New Life Christian School of Cavite, Inc.</h4>
+    <ul>
+      <li>Provided IT support including installation, troubleshooting, and maintenance of hardware and software systems.</li>
+      <li>Developed and maintained school systems such as grading tools, admission forms, and automated workflows.</li>
+      <li>Managed school data and ensured accuracy, security, and accessibility.</li>
+      <li>Designed digital materials and managed social media platforms to support school branding.</li>
+      <li>Taught programming and ICT subjects to Grade 7–10 students, focusing on coding fundamentals and digital literacy.</li>
+      <li>Facilitated hands-on projects to enhance students’ analytical and problem-solving skills.</li>
+    </ul>
   </div>
+
+  <div class="job">
+    <div class="date">June 2023 – December 2023</div>
+    <h3>Website Developer & Data Entry Specialist</h3>
+    <h4>Ofel Logistics Services (Parañaque City)</h4>
+    <ul>
+      <li>Developed a web-based shipping monitoring system to improve operational efficiency.</li>
+      <li>Automated data entry workflows and invoice generation processes.</li>
+      <li>Created dashboards and reports to support business decision-making.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="date">January 2016 – October 2018</div>
+    <h3>Sales Executive & Loan Specialist</h3>
+    <h4>CTBC Bank Philippines</h4>
+    <ul>
+      <li>Managed client portfolios and processed loan applications.</li>
+      <li>Built strong customer relationships to drive sales performance.</li>
+      <li>Provided financial advice tailored to client needs.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="date">April 2010 – October 2014</div>
+    <h3>Housekeeping Supervisor</h3>
+    <h4>Eurotel Corporation</h4>
+    <ul>
+      <li>Supervised housekeeping operations ensuring service quality and guest satisfaction.</li>
+      <li>Trained staff and monitored performance standards.</li>
+      <li>Coordinated with departments to maintain smooth hotel operations.</li>
+    </ul>
+  </div>
+
+</section>
+
+<div class="go-back">
+  <a href="index.html">← Back to Home</a>
+</div>
+
 </body>
 </html>
